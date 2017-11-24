@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Have you been interviewed for or charged with an offence that is awaiting trial or a decision on an alternative sanction or penalty?";
+}
+
+@model GLAA.ViewModels.LicenceApplication.OffencesAwaitingTrialViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                @ViewBag.Title
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            <div class="form-group">
+                <fieldset>
+                    <legend>
+                        <span class="body-text"></span>
+                    </legend>
+                    @foreach (var option in Model.YesNo)
+                    {
+                        <div class="multiple-choice">
+                            @Html.RadioButtonFor(x => x.HasOffencesAwaitingTrial, option.Value, new { id = $"HasOffencesAwaitingTrial_{option.Text}" })
+                            @Html.LabelFor(x => x.HasOffencesAwaitingTrial, option.Text, new { @for = $"HasOffencesAwaitingTrial_{option.Text}" })
+                        </div>
+                    }
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="button">Save and continue</button>
+}

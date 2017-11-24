@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Does your business operate in any of these sectors?";
+    var otherValue = 5;
+}
+
+@model GLAA.ViewModels.LicenceApplication.OperatingIndustriesViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                Does your business operate in any of these sectors?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            @Html.CheckBoxFormGroupFor(x => x.OperatingIndustries, Model.OperatingIndustries)  
+            <div class="panel panel-border-narrow js-hidden" id="other-industry">  
+                @Html.TextFormGroupFor(x => x.OtherIndustry)    
+            </div>                 
+        </div>
+    </div>
+
+    <button type="submit" class="button">Continue</button>
+}
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            hiddenContent.hideContent();
+            branchedQuestion.toggleBranch('#OperatingIndustries_4__Checked', '#other-industry');
+        });
+    </script>
+}

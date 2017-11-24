@@ -1,0 +1,86 @@
+﻿@model GLAA.ViewModels.LicenceApplication.LicenceApplicationViewModel
+@{
+    var eligibilityCompleted = Convert.ToBoolean(Request.QueryString["eligibilityCompleted"]);
+}
+
+<h1 class="heading-xlarge">Declaration and Consent</h1>
+<p>
+    Data Protection Act: information you provide will be held by the GLA. The information will be used to assess
+    your application. It may be checked with other Government Departments and authorities with the legal right to
+    access information held by the GLA. It may also be checked with financial and other organisations involved in
+    crime prevention for the purpose of preventing and detecting crime (including the Audit Commission and any
+    other body with relevant audit powers). This includes overseas equivalents of UK government departments
+    and enforcement bodies. Please write to the GLA if you wish to make a subject access request in relation to
+    personal data held by the Authority. Information held by the GLA may be released on request under the
+    Freedom of Information Act 2000.
+</p>
+<p>
+    The following section <strong>must</strong> be read, signed and dated.
+    <ul class="list list-bullet">
+        <li>
+            I understand and accept that the information contained in this document may also be shared and
+            checked with other Government Departments and their agencies.
+        </li>
+        <li>
+            I declare that the information given in this form and any supporting material is correct to the best of my
+            knowledge and belief and that I have not deliberately omitted any necessary material or made an
+            incorrect statement. I understand that if deliberate omissions or incorrect statements have been made,
+            my application may be refused without further consideration or, if a licence has been issued, it may be
+            liable to immediate revocation. I further understand that deliberate omissions or incorrect statements
+            may be liable to prosecution and/or sanction.
+        </li>
+        <li>
+            I understand that the GLA may contact me by telephone and ask for details regarding personal
+            information. I consent to this subsequent information being used in the assessment of my application.
+        </li>
+        <li>
+            I understand I must notify the GLA within 20 working days of any significant changes to the information
+            recorded on this form, except for changes to the annual turnover which must be declared at renewal.
+        </li>
+    </ul>
+</p>
+@using (Html.BeginForm("Tasklist", "Licence"))
+{
+    <div class="grid-row">
+        <div class="column-full">
+            <div class="multiple-choice">
+                <input id="checkbox-agree-declaration" name="agree-declaration" type="checkbox" value="true">
+                <label for="checkbox-agree-declaration">I agree with the above declaration</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-large">
+                Name of signatory
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            <div class="form-group">
+                @Html.TextBox("signatoryname")
+            </div>
+        </div>
+    </div>
+    
+    <br />
+    <div class="grid-row">
+        <div class="column-full">
+            <div class="form-group">
+                <button type="submit" class="button">Save and continue</button>
+            </div>
+        </div>
+    </div>
+}
+<script>
+    var Declaration = function () {
+        var form = document.querySelector("form");
+        form.action += "?eligibilityCompleted=@(eligibilityCompleted)";
+
+        form.addEventListener("submit", function (e) {
+            if (document.querySelector("#checkbox-agree-declaration").checked && document.querySelector("#signatoryname").value !== "") {
+                form.action += "&declarationCompleted=true";
+            }
+        });
+    }();
+</script>

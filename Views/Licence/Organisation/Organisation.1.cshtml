@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Additional Organisation Questions";
+}
+
+@model GLAA.ViewModels.LicenceApplication.OrganisationViewModel
+
+<main id="content" role="main">
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-large">
+                @ViewBag.Title
+            </h1>
+            <p>The questions in this section relate to the organisation and will assist the GLAA determine if an inspection is required.</p>
+            <p>The questions that you will be asked include:</p>
+            <ul class="list-bullet">
+                <li>The non-GLAA sectors that you currently provide workers to.</li>
+                <li>If you have a written agreement to labour with your labour users.</li>
+                <li>How your business is organised.</li>
+                <li>If you intend to provide transport or accommodation to your workers.</li>
+                <li>The countries your workers are from.</li>
+                <li>The type of contract you intend to provide workers.</li>
+                <li>Shellfish gathering (if relevant to your business).</li>
+            </ul>
+            <p>You can always save and return to this information at a later date if required</p>
+        </div>
+    </div>
+
+    <a id="StartSection" class="button button-start" href="@Url.Action("Apply/Organisation/Part/2", "Licence")">Start section</a>
+</main> 

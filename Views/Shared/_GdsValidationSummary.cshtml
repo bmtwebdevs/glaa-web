@@ -1,0 +1,63 @@
+﻿@{
+    bool doValidation;
+    var doOverride = Html.ViewData["doOverride"] != null && (bool) Html.ViewData["doOverride"];
+    if (doOverride)
+    {
+        doValidation = true;
+    }
+    else
+    {
+        // Do we know which part of the form we came from?
+        if (Session["LastSubmittedPageSection"] != null && Session["LastSubmittedPageId"] != null)
+        {
+            // Are we returning to this page due to a validation error or coming to it fresh?
+            // As the ID is no longer part of the route we have to get it from the URL
+            if (Session["LastSubmittedPageSection"].ToString() != Html.ViewContext.RouteData.Values["action"].ToString() ||
+                Session["LastSubmittedPageId"].ToString() != Html.ViewContext.HttpContext.Request.Url?.Segments.Last())
+            {
+                // Coming to it fresh, don't validate initially
+                doValidation = false;
+            }
+            else
+            {
+                // Coming back to it due to failed validation, this should always be true
+                doValidation = !Html.ViewData.ModelState.IsValid;
+            }
+        }
+        else
+        {
+            // Don't know where we came from, don't validate
+            doValidation = false;
+        }
+    }
+
+    var summaryDisplay = doValidation && !Html.ViewData.ModelState.IsValid ? "block" : "none";
+
+    if (doValidation && !Html.ViewData.ModelState.IsValid)
+    {
+        ViewBag.Title = $"Error: {ViewBag.Title}";
+    }
+}
+
+<div class="error-summary" style="display: @summaryDisplay;" role="alert" aria-labelledby="error-summary-heading" tabindex="-1">
+    <h2 class="heading-medium error-summary-heading" id="error-summary-heading">
+        There was a problem
+    </h2>
+    <p>
+        Please amend the following details:
+    </p>
+    <ul class="error-summary-list">
+        @if (doValidation)
+        {
+            foreach (var error in Html.ViewData.ModelState.Where(m => m.Value.Errors.Any()))
+            {
+                var link = doOverride ? $"#{error.Key}" : $"#legend_{error.Key}";
+                <li><a href="@link">@error.Value.Errors.First(e => !string.IsNullOrEmpty(e.ErrorMessage)).ErrorMessage</a></li>
+            }
+        }
+        else
+        {
+            <li style="display: none"><a></a></li>
+        }
+    </ul>
+</div>

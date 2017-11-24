@@ -1,0 +1,68 @@
+﻿@model GLAA.ViewModels.LicenceApplication.LicenceApplicationViewModel
+@{
+    var applicationIsValid = Model.OrganisationDetails.IsValid &&
+        Model.PrincipalAuthority.IsValid &&
+        Model.AlternativeBusinessRepresentatives.IsValid &&
+        Model.DirectorOrPartner.IsValid &&
+        Model.NamedIndividuals.IsValid &&
+        Model.SecurityQuestions.IsValid &&
+        Model.Organisation.IsValid;
+
+    ViewBag.Title = applicationIsValid ? "Check your answers before sending your application" : "Application not ready to be submitted";
+    var errorClass = Html.ViewData.ModelState.IsValid ? string.Empty : "error";
+    Html.ViewData.Add("doOverride", true);
+}
+
+@using (Html.BeginForm())
+{
+    if (applicationIsValid)
+    {
+        <div class="column-full">
+            @Html.Partial("_GdsValidationSummary", Html.ViewData)
+        </div>
+    }
+    <h1 class="heading-large">@ViewBag.Title</h1>
+    <p class="lede">
+        Once you have completed all sections in Parts 1 and 2 you will be able to submit your application.
+    </p>
+    if (applicationIsValid)
+    {
+        @Html.DisplayFor(m => m.OrganisationDetails)
+        @Html.DisplayFor(m => m.PrincipalAuthority)
+        @Html.DisplayFor(m => m.AlternativeBusinessRepresentatives)
+        @Html.DisplayFor(m => m.DirectorOrPartner)
+        @Html.DisplayFor(m => m.NamedIndividuals)
+        @Html.DisplayFor(m => m.SecurityQuestions)
+        @Html.DisplayFor(m => m.Organisation)
+        <div class="column-full">
+            <h1 class="heading-large">
+                Declaration
+            </h1>
+            <p>By continuing you confirm that:</p>
+            <ul class="list list-bullet">
+                <li>the information you've given is correct</li>
+                <li>you agree to the <a href="#">terms and conditions</a></li>
+            </ul>
+            <div class="notice">
+                <i class="icon icon-important">
+                    <span class="visually-hidden">Warning</span>
+                </i>
+                <strong class="bold-small">
+                    You could be prosecuted if you deliberately give untrue or misleading information
+                </strong>
+            </div>
+            <div class="declaration @errorClass">
+                @Html.CheckBoxFor(m => m.AgreedToTermsAndConditions)
+                @Html.LabelFor(m => m.AgreedToTermsAndConditions)
+            </div>
+        </div>
+        <div class="column-two-thirds">
+            <button type="submit" class="button">Submit Application</button>
+        </div>
+    }
+    else
+    {
+        <a href="@Url.Action("TaskList")" class="button">Back to Task List</a>
+    }
+}
+

@@ -1,0 +1,30 @@
+﻿@model GLAA.ViewModels.LicenceApplication.LicenceStatusViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-xlarge">
+                My Licence
+            </h1>
+            <p class="lede">Check on the status of your licence or apply for a new one</p>
+            <h1 class="heading-medium">Current status</h1>
+            @Html.DisplayFor(m => Model)
+        </div>
+    </div>
+    <div class="grid-row">
+        <div class="column-full">
+            <p>This is some text describing whether the button below takes the user to the new application information page, to an application in progress, or if they have a licence, to somewhere else.</p>
+        </div>
+    </div>
+    <div class="grid-row">
+        <div class="column-full">
+            <button type="submit" class="button button-start" role="button">Apply</button>
+        </div>
+    </div>
+}
+

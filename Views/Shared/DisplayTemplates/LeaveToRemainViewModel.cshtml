@@ -1,0 +1,23 @@
+﻿@model GLAA.ViewModels.LicenceApplication.LeaveToRemainViewModel
+
+@{
+    string text;
+    if(Model?.LeaveToRemainFrom.Date != null && !Model.LeaveToRemainTo.Date.HasValue)
+    {
+        text = $"From {Model.LeaveToRemainFrom.Date}";
+    }
+    else if (Model != null && Model.LeaveToRemainFrom.Date.HasValue == false && Model.LeaveToRemainTo.Date.HasValue)
+    {
+        text = $"Until {Model.LeaveToRemainTo.Date}";
+    }
+    else if (Model?.LeaveToRemainFrom.Date != null && Model.LeaveToRemainTo.Date.HasValue)
+    {
+        text = $"{Model.LeaveToRemainFrom.Date} - {Model.LeaveToRemainTo.Date}";
+    }
+    else
+    {
+        text = "N/A";
+    }
+}
+
+@text

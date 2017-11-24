@@ -1,0 +1,25 @@
+﻿@model GLAA.ViewModels.LicenceApplication.AlternativeBusinessRepresentativeCollectionViewModel
+
+@{
+    ViewBag.Title = "Alternative Business Representative Details";
+}
+
+<main id="content" role="main">
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-large">
+                @ViewBag.Title
+            </h1>
+            <p>In this section you will be able to add one or more Alternative Business Representative (ABR).</p>
+            <p>It can often be very helpful to have an alternative contact that can make changes to the licence record and carry out renewals in the absence of the Principal Authority. Should you wish to nominate another person to act on your behalf you should complete this section.</p>
+            <p>The questions that you will need to answer in relation to the ABR include:</p>
+            <ul class="list-bullet">
+                <li>Personal information: personal address, date of birth, town/country of birth, job title, business phone number, business email address, National Insurance number (if there is one).</li>
+                <li>The GLAA security questions which will be used to determine whether an inspection is required, and what additional checks may be required.</li>
+            </ul>
+            <p>You can save and return to this section at a later date if required.</p>
+        </div>
+    </div>
+
+    <a id="StartSection" class="button button-start" href="@Url.Action("Apply/AlternativeBusinessRepresentatives/Part/2", "Licence")">Start section</a>
+</main> 

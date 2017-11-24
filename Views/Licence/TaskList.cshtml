@@ -1,0 +1,174 @@
+﻿@{
+    ViewBag.Title = "Apply for a Licence";        
+}
+
+@model GLAA.ViewModels.LicenceApplication.LicenceApplicationViewModel
+
+@using (Html.BeginForm("TaskList", "Licence"))
+{
+    <main id="content" role="main">
+        <div class="grid-row">
+            <div class="column-two-thirds column-minimum">
+                <h1 class="heading-large">
+                    GLAA Application
+                </h1>
+                <p class="lede">Your unique reference number is @(Model.ApplicationId ?? "Not yet created")</p>
+                <ol class="task-list">
+                    <li>
+                        <h2 class="task-list-section">
+                            <span class="task-list-section-number">1. </span> Check before you start
+                        </h2>
+                        <ul class="task-list-items">
+                            <li class="task-list-item">
+
+                                @if (Model.Eligibility.IsValid)
+                                {
+                                    <a class="task-name" href="@Url.Action($"Part/5", "Eligibility")" aria-describedby="eligibility-completed">
+                                        Check eligibility
+                                    </a>
+                                    <strong class="task-completed" id="eligibility-completed">Completed</strong>
+                                }
+                                else
+                                {
+                                    <a class="task-name" href="@Url.Action($"Part/1", "Eligibility")" aria-describedby="eligibility-completed">
+                                        Check eligibility
+                                    </a>
+                                }
+                            </li>
+                            <li class="task-list-item">
+                                <a class="task-name" href="@Url.Action("Index", "Declaration")" aria-describedby="read-declaration-completed">
+                                    Read declaration
+                                </a>
+                                @if (Model.Declaration.IsValid)
+                                {
+                                    <strong class="task-completed" id="read-declaration-completed">Completed</strong>   
+                                }                                
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="task-list-section">
+                            <span class="task-list-section-number">2. </span> Prepare application
+                        </h2>
+                        <ul class="task-list-items">
+                            <li class="task-list-item">
+
+                                @if (Model.OrganisationDetails.IsValid)
+                                {
+                                    <a class="task-name" href="@Url.Action($"Apply/OrganisationDetails/Part/17", "Licence")" aria-describedby="company-information-completed">
+                                        Company information
+                                    </a>
+                                    <strong class="task-completed" id="company-information-completed">Completed</strong>
+                                }
+                                else
+                                {
+                                    <a class="task-name" href="@Url.Action($"Apply/OrganisationDetails/Part/1", "Licence")" aria-describedby="company-information-completed">
+                                        Company information
+                                    </a>
+                                }
+                            </li>
+                            <li class="task-list-item">
+                                @if (Model.PrincipalAuthority != null && Model.PrincipalAuthority.IsValid)
+                                {
+                                    <a class="task-name" href="@Url.Action($"Apply/PrincipalAuthority/Part/31", "Licence")">
+                                        Your Principal Authority details
+                                    </a>
+                                    <strong class="task-completed" id="principal-authority-details-completed">Completed</strong>
+                                }
+                                else
+                                {
+                                    <a class="task-name" href="@Url.Action($"Apply/PrincipalAuthority/Part/1", "Licence")">
+                                        Your Principal Authority details
+                                    </a>
+                                }
+                            </li>
+                            <li class="task-list-item">
+                                @if (Model.AlternativeBusinessRepresentatives != null && Model.AlternativeBusinessRepresentatives.IsValid)
+                                {
+                                    <a class="task-name" href="@Url.Action($"Apply/AlternativeBusinessRepresentatives/Part/3", "Licence")">
+                                        Alternative Business Representatives
+                                    </a>
+                                    <strong class="task-completed" id="contact-details-completed">Completed</strong>
+                                }
+                                else
+                                {
+                                    <a class="task-name" href="@Url.Action($"Apply/AlternativeBusinessRepresentatives/Part/1", "Licence")">
+                                        Alternative Business Representatives
+                                    </a>
+                                }
+                            </li>
+                            <li class="task-list-item">
+                                @if (Model.DirectorOrPartner != null && Model.DirectorOrPartner.IsValid)
+                                {
+                                    <a class="task-name" href="@Url.Action($"Apply/DirectorsOrPartners/Part/3", "Licence")">
+                                        Directors or partners
+                                    </a>
+                                    <strong class="task-completed" id="contact-details-completed">Completed</strong>
+                                }
+                                else
+                                {
+                                    <a class="task-name" href="@Url.Action($"Apply/DirectorsOrPartners/Part/1", "Licence")">
+                                        Directors or partners
+                                    </a>
+                                }
+                            </li>
+                            <li class="task-list-item">
+                                @if (Model.NamedIndividuals != null && Model.NamedIndividuals.IsValid)
+                                {
+                                    <a class="task-name" href="@Url.Action($"Apply/NamedIndividuals/Part/3", "Licence")">
+                                        Named Individuals
+                                    </a>
+                                    <strong class="task-completed" id="contact-details-completed">Completed</strong>
+                                }
+                                else
+                                {
+                                    <a class="task-name" href="@Url.Action($"Apply/NamedIndividuals/Part/1", "Licence")">
+                                        Named Individuals
+                                    </a>
+                                }
+                            </li>
+                            <li class="task-list-item">
+                                @if (Model.Organisation != null && Model.Organisation.IsValid)
+                                {
+                                    <a class="task-name" href="@Url.Action($"Apply/Organisation/Part/16", "Licence")">
+                                        Organisation
+                                    </a>
+                                    <strong class="task-completed" id="contact-details-completed">Completed</strong>
+                                }
+                                else
+                                {
+                                    <a class="task-name" href="@Url.Action($"Apply/Organisation/Part/1", "Licence")">
+                                        Organisation
+                                    </a>
+                                }
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="task-list-section">
+                            <span class="task-list-section-number">3. </span> Apply
+                        </h2>
+                        <ul class="task-list-items">
+                            <li class="task-list-item">
+                                <a class="task-name" href="@Url.Action("SubmitApplication", "Licence")">
+                                    Submit Application
+                                </a>
+                            </li>
+                            <li class="task-list-item">
+                                <a class="task-name" href="@Url.Action("DecisionWait", "Licence")">
+                                    Wait for a decision
+                                </a>
+                            </li>
+                            <li class="task-list-item">
+                                <a class="task-name" href="@Url.Action("PayFee", "Licence")">
+                                    Pay application or inspection fee
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </main>
+}

@@ -1,0 +1,16 @@
+﻿@model GLAA.ViewModels.LicenceApplication.VATStatusViewModel
+
+@{
+    string text;
+
+    if (Model?.HasVATNumber != null && Model.HasVATNumber.Value)
+    {
+        text = $"{Model.VATNumber}, registered {Model.VATRegistrationDate}";
+    }
+    else
+    {
+        text = "Not registered";
+    }
+}
+
+@text

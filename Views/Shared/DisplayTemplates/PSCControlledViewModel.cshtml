@@ -1,0 +1,17 @@
+﻿@model GLAA.ViewModels.LicenceApplication.PSCControlledViewModel
+
+@{
+    var text = "No";
+    if (Model?.IsPSCControlled != null && Model.IsPSCControlled.Value)
+    {
+        text = $"Yes";
+    }
+}
+
+@text
+@if (Model?.IsPSCControlled != null && Model.IsPSCControlled.Value)
+{
+    <br />
+    @Model.PSCDetails
+}
+

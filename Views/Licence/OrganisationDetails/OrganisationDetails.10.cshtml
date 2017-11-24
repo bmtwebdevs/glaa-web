@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Organisation Details - Part 12";
+    var switchValue = 0;
+}
+
+@model GLAA.ViewModels.LicenceApplication.LegalStatusViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                What is your company's legal status?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            <div class="form-group">
+                <fieldset>
+                    <legend>
+                        <span class="error-message">
+                            <span class="field-validation-valid" data-valmsg-for="radio_list" data-valmsg-replace="true"></span>
+                        </span>
+                    </legend>
+                    @foreach (var status in Model.AvailableLegalStatuses)
+                    {
+                        <div class="multiple-choice">
+                            @Html.RadioButtonFor(x => x.LegalStatus, status.Id)
+                            @Html.Label(status.Name)
+                        </div>
+                        if (status.Name == "Limited Company")
+                        {
+                            switchValue = status.Id;
+                            <div class="panel panel-border-narrow js-hidden" id="limited-company-info">
+                                @Html.TextFormGroupFor(x => x.CompaniesHouseNumber)
+                                @Html.DateFormGroupFor(x => x.CompanyRegistrationDate)
+                            </div>
+                        }
+                    }
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="button">Save and continue</button>
+}
+
+@section scripts
+{    
+    <script>
+        $(document).ready(function () {
+            hiddenContent.hideContent();
+            branchedQuestion.toggleBranch('.multiple-choice input', '#limited-company-info', @switchValue);
+        });
+    </script>
+}

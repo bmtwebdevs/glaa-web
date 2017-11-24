@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Director or Partner - Part 11";
+}
+
+@model GLAA.ViewModels.LicenceApplication.PersonalEmailAddressViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                What is your personal email address?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            @Html.TextFormGroupFor(x => x.PersonalEmailAddress)
+        </div>
+    </div>
+    
+    <button type="submit" class="button">Save and continue</button>
+}

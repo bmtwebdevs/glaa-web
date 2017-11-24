@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Principal Authority - Part 2";
+}
+
+@model GLAA.ViewModels.LicenceApplication.FullNameViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                What is your full name?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            @Html.TextFormGroupFor(x => x.FullName)
+        </div>
+    </div>
+    
+    <button type="submit" class="button">Save and continue</button>
+}
+
+

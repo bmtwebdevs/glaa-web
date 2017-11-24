@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Organisation - Part 13";
+    var switchValue = "true";
+}
+
+@model GLAA.ViewModels.LicenceApplication.ShellfishWorkerNationalityViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                What are the nationality of the workers that will be gathering shellfish?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            @Html.TextFormGroupFor(x => x.NationalityOfWorkers)
+        </div>
+    </div>    
+    <button type="submit" class="button">Save and continue</button>
+}

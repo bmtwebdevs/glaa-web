@@ -1,0 +1,24 @@
+﻿@model GLAA.ViewModels.LicenceApplication.DirectorOrPartnerCollectionViewModel
+
+@{
+    ViewBag.Title = "Directors, Company Secretary and Partner Details";
+}
+
+<main id="content" role="main">
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-large">
+                @ViewBag.Title
+            </h1>
+            <p>In this section you will be required to provide the details for all directors and the company secretary (in the case of a company), and all partners (in the case of a partnership). If your organisation is registered with Companies House these will be the same directors and company secretary registered with Companies House.</p>
+            <p>The questions that will need to be answered for each director or partner include:</p>
+            <ul class="list-bullet">
+                <li>Personal information: personal address, date of birth, town/country of birth, job title, business phone number, business email address, National Insurance number (if there is one).</li>
+                <li>The GLAA security questions which will be used to determine whether an inspection is required, and what additional checks may be required.</li>
+            </ul>
+            <p>You can save and return to this section at a later date if required.</p>
+        </div>
+    </div>
+
+    <a id="StartSection" class="button button-start" href="@Url.Action("Apply/DirectorsOrPartners/Part/2", "Licence")">Start section</a>
+</main> 

@@ -1,0 +1,173 @@
+﻿@model AdminLicenceViewModel
+
+@using GLAA.ViewModels.Admin
+
+@{
+    ViewBag.Title = Model.Licence.IsApplication ? "Application" : "Licence";
+
+    var kvPairs = new List<string>();
+    foreach (var nextStatus in Model.LatestStatus.NextStatuses)
+    {
+        //Can this not be prepped as part of the model?
+        var values = string.Join(",", nextStatus.Reasons.Select(v => $"{{\"text\": \"{v.Description}\", \"value\": \"{v.Id}\"}}"));
+        var kvPair = $"\"{nextStatus.Id}\":{{\"reasons\":[{values}], \"noncompliant\":{nextStatus.RequireNonCompliantStandards.ToString().ToLowerInvariant()}}}";
+        kvPairs.Add(kvPair);
+    }
+
+    var kvJson = $"{{{string.Join(",", kvPairs)}}}";
+}
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.HiddenFor(m => m.Licence.Id)
+        <div class="grid-row">
+            <div class="column-two-thirds">
+                <h1 class="heading-large">@(ViewBag.Title) @Model.Licence.ApplicationId</h1>
+                <h1 class="heading-medium" id="status">Status</h1>
+                @Html.ExternalStatusFor(Model.LatestStatus)
+                <div class="grid-row">
+                    @if (Model.LatestStatus.NextStatuses.Any())
+                {
+                        <div class="column-half">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.NewLicenceStatus, new { @class = "form-label" })
+                                @Html.DropDownListFor(m => m.NewLicenceStatus, Model.NextStatusDropDown, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="column-half">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.NewStatusReason, new { @class = "form-label" })
+                                @Html.DropDownListFor(m => m.NewStatusReason, new SelectList(new List<string>()), new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="column-full" id="standardCheckboxes" style="display: none">
+                            <h1 class="heading-small">Select Non-compliant Standards</h1>
+                            @for (var i = 0; i < Model.StandardCheckboxes.Count; i++)
+                            {
+                                <div class="column-one-third">
+                                    <div class="form-group">
+                                        <div class="multiple-choice">
+                                            @Html.HiddenFor(m => m.StandardCheckboxes[i].Id)
+                                            @Html.HiddenFor(m => m.StandardCheckboxes[i].Name)
+                                            @Html.CheckBoxFor(m => m.StandardCheckboxes[i].Checked)
+                                            @Html.LabelFor(m => m.StandardCheckboxes[i].Checked, Model.StandardCheckboxes[i].Name)
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    <div class="column-full">
+                        <button type="submit" class="button">Save status</button>
+                    </div>
+                </div>
+            </div>
+            <div class="column-third">
+                <aside class="govuk-related-items add-heading-medium js-stick-at-top-when-scrolling">
+                    <h2>Section Navigation</h2>
+                    <nav>
+                        <ul>
+                            <li><a href="#status">Status</a></li>
+                            <li><a href="#organisation-details">Organisation Details</a></li>
+                            <li><a href="#principal-authority">Principal Authority</a></li>
+                            <li><a href="#alternative-business-representative">Alternative Business Representatives</a></li>
+                            <li><a href="#directors-or-partners">Directors Or Partners</a></li>
+                            <li><a href="#named-individuals">Named Individuals</a></li>
+                            <li><a href="#organisation">Organisation</a></li>
+                        </ul>
+                    </nav>
+                </aside>
+            </div>
+        </div>
+        <div class="grid-row">
+
+        </div>
+        <div class="grid-row">
+
+            <div class="column-two-thirds">
+
+            </div>
+        </div>
+
+        <div class="grid-row">
+            <div class="column-two-thirds">
+                <h1 class="heading-medium" id="organisation-details">Organisation Details</h1>
+                @Html.DisplayFor(m => m.OrganisationDetails)
+            </div>
+
+        </div>
+        <div class="grid-row">
+            <div class="column-two-thirds">
+                <h1 class="heading-medium" id="principal-authority">Principal Authority</h1>
+                @Html.DisplayFor(m => m.PrincipalAuthority)
+            </div>
+        </div>
+        <div class="grid-row">
+            <div class="column-two-thirds">
+                <h1 class="heading-medium" id="alternative-business-representative">Alternate Business Representatives</h1>
+                @Html.DisplayFor(m => m.AlternativeBusinessRepresentatives)
+            </div>
+        </div>
+        <div class="grid-row">
+            <div class="column-two-thirds">
+                <h1 class="heading-medium" id="directors-or-partners">Directors and Partners</h1>
+                @Html.DisplayFor(m => m.DirectorsOrPartners)
+            </div>
+        </div>
+        <div class="grid-row">
+            <div class="column-two-thirds">
+                <h1 class="heading-medium" id="named-individuals">Named Individuals</h1>
+                @Html.DisplayFor(m => m.NamedIndividuals)
+            </div>
+        </div>
+        <div class="grid-row">
+            <div class="column-two-thirds">
+                <h1 class="heading-medium" id="organisation">Organisation</h1>
+                @Html.DisplayFor(m => m.Organisation)
+            </div>
+        </div>
+    </div>
+}
+@section scripts {
+    <script type="text/javascript">
+        (function() {
+
+            GOVUK.stickAtTopWhenScrolling.init();
+
+            var reasons = @Html.Raw(kvJson);
+            document.getElementById("@nameof(Model.NewStatusReason)").disabled = "disabled";
+
+            document.getElementById("NewLicenceStatus").addEventListener("click",
+                function(e) {
+                    var statusReasonDdl = document.getElementById("@nameof(Model.NewStatusReason)");
+                    while (statusReasonDdl.hasChildNodes()) {
+                        statusReasonDdl.removeChild(statusReasonDdl.lastChild);
+                    }
+
+                    if (reasons[e.target.value] && reasons[e.target.value]["reasons"].length) {
+                        var blankOpt = document.createElement("option");
+                        blankOpt.value = "";
+                        blankOpt.text = "Please select...";
+                        statusReasonDdl.add(blankOpt);
+                        for (var i = 0; i < reasons[e.target.value]["reasons"].length; i++) {
+                            var opt = document.createElement("option");
+                            opt.value = reasons[e.target.value]["reasons"][i]["value"];
+                            opt.text = reasons[e.target.value]["reasons"][i]["text"];
+                            statusReasonDdl.add(opt);
+                        }
+                        statusReasonDdl.disabled = "";
+
+                        if (reasons[e.target.value].noncompliant) {
+                            document.getElementById("standardCheckboxes").style.display = "block";
+                        } else {
+                            document.getElementById("standardCheckboxes").style.display = "none";
+                        }
+                    } else {
+                        statusReasonDdl.disabled = "disabled";
+                        document.getElementById("standardCheckboxes").style.display = "none";
+                    }
+                });
+        })();
+    </script>
+}

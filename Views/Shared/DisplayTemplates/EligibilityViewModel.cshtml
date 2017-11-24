@@ -1,0 +1,29 @@
+﻿@model GLAA.ViewModels.LicenceApplication.EligibilityViewModel
+
+<table class="check-your-answers">
+    <thead>
+        <tr>
+            <th colspan="3">Eligibility</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>@Html.LabelFor(m => m.SuppliesWorkers.SuppliesWorkers)</td>
+        <td class="@Model.SuppliesWorkers?.SuppliesWorkers">@Html.DisplayFor(m => m.SuppliesWorkers)</td>
+        <td class="change-answer"><a href="@Url.Action("Part1", "Eligibility")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.SuppliesWorkers.SuppliesWorkers)</span></a></td>
+    </tr>
+        
+    <tr>
+        <td>@Html.LabelFor(m => m.OperatingIndustries.OperatingIndustries)</td>
+        <td class="@Model.OperatingIndustries?.OperatingIndustries">@Html.DisplayFor(m => m.OperatingIndustries.OperatingIndustries, "ListCheckboxListItem")</td>
+        <td class="change-answer"><a href="@Url.Action("Part2", "Eligibility")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.OperatingIndustries.OperatingIndustries)</span></a></td>
+    </tr>       
+        
+    <tr>
+        <td>@Html.LabelFor(m => m.Turnover.TurnoverBand)</td>
+        <td class="@Model.Turnover?.TurnoverBand">@Html.DisplayFor(m => m.Turnover.TurnoverBand)</td>
+        <td class="change-answer"><a href="@Url.Action("Part3", "Eligibility")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.Turnover.TurnoverBand)</span></a></td>
+    </tr>
+
+    </tbody>
+</table>

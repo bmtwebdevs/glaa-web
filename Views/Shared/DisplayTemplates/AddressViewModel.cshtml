@@ -1,0 +1,48 @@
+﻿@model GLAA.ViewModels.LicenceApplication.AddressViewModel
+
+@{
+//var line2 = string.IsNullOrWhiteSpace(Model.AddressLine2) ? string.Empty : $"{Model.AddressLine2}<br>";
+//var line3 = string.IsNullOrWhiteSpace(Model.AddressLine3) ? string.Empty : $"{Model.AddressLine3}<br>";
+//var town = string.IsNullOrWhiteSpace(Model.Town) ? string.Empty : $"{Model.Town}<br>";
+//var postcode = Model.NonUK ? $"{Model.Postcode}<br>" : Model.Postcode;
+//var country = Model.NonUK ? Model.Country : string.Empty;
+//var address = $"{Model.AddressLine1}<br>{line2}{line3}{town}{Model.County}<br>{postcode}{country}";
+}
+
+@{
+    if (@Model == null)
+    {
+        <p>No address present</p>
+    }
+    else
+    {
+        @Model.AddressLine1
+
+        if (!string.IsNullOrWhiteSpace(Model.AddressLine2))
+        {
+            <br />
+            @Model.AddressLine2
+        }
+
+        if (!string.IsNullOrWhiteSpace(Model.AddressLine2))
+        {
+            <br />
+            @Model.AddressLine3
+        }
+
+        if (!string.IsNullOrWhiteSpace(Model.Town))
+        {
+            <br />
+            @Model.Town
+        }
+        <br />
+        @Model.County
+        <br />
+        @Model.Postcode
+        if (Model.NonUK)
+        {
+            <br />
+            @Model.Country
+        }
+    }
+}

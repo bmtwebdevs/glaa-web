@@ -1,0 +1,22 @@
+﻿@model GLAA.ViewModels.Admin.AdminHomeViewModel
+
+@{
+    ViewBag.Title = "GLAA - Administrator Area";
+}
+<h2 class="heading-large admin-page-title">Dashboard</h2>
+<ul class="hub-actions">
+    <li>
+        <a class="dashboard-panel" href="@Url.Action("ApplicationList", "Admin", new { isApplication = true })">
+            <h2 class="count">@Model.ApplicationCount</h2>
+            <p>New Applications</p>
+        </a>
+    </li>
+    <li>
+        <a class="dashboard-panel" href="@Url.Action("ApplicationList", "Admin", new { isApplication = false })">
+            <h2 class="count">@Model.LicenceCount</h2>
+            <p>Issued Licences</p>
+        </a>
+    </li>
+</ul>
+
+

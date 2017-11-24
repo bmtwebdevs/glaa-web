@@ -1,0 +1,583 @@
+﻿@model GLAA.Web.Models.LicenceApplicationViewModel
+@using GLAA.Web.Models
+
+@{
+    ViewBag.Title = "Application";
+    var status = EnumHelpers.RandomEnumValue<LicenceStatus>();
+    var blank = new List<SelectListItem> { new SelectListItem { Text = "Please select...", Value = "" } };
+    var nextStatuses = status.GetInfoForNextStatuses().ToDictionary(s => s.LicenceStatus.ToString());
+    var nextStatusesDropdownValues = blank.Concat(nextStatuses.Select(s => s.Value.SelectListItem));
+
+
+    //nextStatuses.ToDictionary(s => s.Value, t => ((LicenceStatus)Enum.Parse(typeof(LicenceStatus), t.Value)).GetDropDownForReasons());
+    var kvPairs = new List<string>();
+    foreach (var nextStatus in nextStatuses)
+    {
+        var values = string.Join(",", nextStatus.Value.Reasons.Select(v => $"{{\"text\": \"{v.Text}\", \"value\": \"{v.Value}\"}}"));
+        var kvPair = $"\"{nextStatus.Key}\":{{\"reasons\":[{values}], \"noncompliant\":{nextStatus.Value.SpecifyNonCompliantStandard.ToString().ToLowerInvariant()}}}";
+        kvPairs.Add(kvPair);
+    }
+
+    var kvJson = $"{{{string.Join(",", kvPairs)}}}";
+}
+
+<main id="content" role="main">
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-large">Application BMTD-1234</h1>
+        </div>
+    </div>
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-medium">Status</h1>
+        </div>
+        <div class="column-full">
+            @Html.InternalStatusFor(status)
+        </div>
+        @{
+            if (nextStatuses.Any())
+            {
+                <div class="column-one-half">
+                    <div class="form-group">
+                        <label class="form-label" for="select-box">New Status</label>
+                        @Html.DropDownListFor(m => m.NewLicenceStatus, nextStatusesDropdownValues, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="column-one-half">
+                    <div class="form-group">
+                        <label class="form-label" for="select-box">Reason</label>
+                        <select id="statusReason" class="form-control"></select>
+                    </div>
+                </div>
+            }
+        }
+        <div class="column-full" id="standardCheckboxes" style="display: none">
+            <h1 class="heading-small">Select Non-compliant Standards</h1>
+            @foreach (var standard in EnumHelpers.GetCheckBoxesForStandards())
+            {
+                <div class="column-one-third">
+                    <div class="form-group">
+                        <div class="multiple-choice">
+                            @Html.CheckBox(standard.LicensingStandard.ToString())
+                            @Html.Label(standard.Name)
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="column-full">
+            <a href="#" class="button">Save status</a>
+        </div>
+    </div>
+
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-medium">Organisation</h1>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Name</h1>
+            <p>ACME Corporation</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Trading Name</h1>
+            <p>ACME</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Industry</h1>
+            <p>Agriculture; Horticulture</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Operating Country(s)</h1>
+            <p>England; Scotland</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Turnover</h1>
+            <p>&gt; £10 million (Band A)</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">&nbsp;</h1>
+            <p>&nbsp;</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Address</h1>
+            <p>123 Fake Street, Bath, B&amp;NES, BA1 1ZZ</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Phone number(s)</h1>
+            <p>01632 960335<br />07700 900692</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Email</h1>
+            <p><a href="mailto:example@example.com">example@example.com</a><br />&nbsp;</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Website</h1>
+            <p><a href="http://example.com">http://example.com</a><br /></p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Communication Preference</h1>
+            <p>Email</p>
+        </div>
+    </div>
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-medium">Principal Authority</h1>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Name</h1>
+            <p>Mr John Smith</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Alternate Name</h1>
+            <p>Mr Alan Smithee</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Job Title</h1>
+            <p>CEO</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Date of Birth</h1>
+            <p>01/01/1970</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Town of Birth</h1>
+            <p>Nottingham</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">National Insurance Number</h1>
+            <p>QQ 12 34 56 C</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Address</h1>
+            <p>123 Fake Street, Bath, B&amp;NES, BA1 1ZZ</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Phone number(s)</h1>
+            <p>01632 960335 ext. 555<br />07700 900692</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Email</h1>
+            <p><a href="mailto:example@example.com">example@example.com</a><br />&nbsp;</p>
+        </div>
+        <div class="column-full">
+            <h1 class="heading-small">Previous Experience</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-medium">Alternate Business Representatives</h1>
+        </div>
+        <div class="column-full">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th class="numeric" scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mr James Smith</td>
+                        <td><a href="~/Admin/ApplicationPerson?name=Mr%20James%20Smith&personType=Alternate%20Business%20Representative&id=1">View Details</a></td>
+                    </tr>
+                    <tr>
+                        <td>Mr Jack Smith</td>
+                        <td><a href="~/Admin/ApplicationPerson?name=Mr%20Jack%20Smith&personType=Alternate%20Business%20Representative&id=1">View Details</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-medium">Directors and Partners</h1>
+        </div>
+        <div class="column-full">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th class="numeric" scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mr Joseph Smith</td>
+                        <td><a href="~/Admin/ApplicationPerson?name=Mr%20Joseph%20Smith&personType=Director%20or%20Partner&id=1">View Details</a></td>
+                    </tr>
+                    <tr>
+                        <td>Mrs Jane Smith</td>
+                        <td><a href="~/Admin/ApplicationPerson?name=Mr%20Jane%20Smith&personType=Director%20or%20Partner&id=1">View Details</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-medium">Named Individuals</h1>
+        </div>
+        <div class="column-full">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th class="numeric" scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mr Jeremy Smith</td>
+                        <td><a href="~/Admin/ApplicationPerson?name=Mr%20Jeremy%20Smith&personType=Named%20Individual&id=1">View Details</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-medium">Security Questions</h1>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Other Trading Names</h1>
+            <p>EMCA Corporation</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Town</h1>
+            <p>Bristol</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Country</h1>
+            <p>UK</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Passport Number</h1>
+            <p>925665416</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Right To Work in UK?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">UK Visa/Work Permit Required?</h1>
+            <p>No</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Visa/Permit Number</h1>
+            <p>123456</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Type of Visa/Permit</h1>
+            <p>N/A</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Current Immigration Status</h1>
+            <p>ILR</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Limited Right To Remain?</h1>
+            <p>No</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Leave to Remain From</h1>
+            <p>N/A</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Leave to Remain To</h1>
+            <p>N/A</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Undischarged Bankrupt?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Date of Bankruptcy</h1>
+            <p>1/1/2000</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Bankruptcy Number</h1>
+            <p>123456</p>
+        </div>
+        <div class="column-full">
+            <h1 class="heading-small">Bankruptcy Details</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Disqualified as a Company Director?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">&nbsp;</h1>
+            <p>&nbsp;</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">&nbsp;</h1>
+            <p>&nbsp;</p>
+        </div>
+        <div class="column-full">
+            <h1 class="heading-small">Disqualification Details</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Subject of a Restraint, Confiscation Order or Civil Recovery?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Date of Restraint, Confiscation Order or Civil Recovery</h1>
+            <p>1/1/2000</p>
+        </div>
+        <div class="column-full">
+            <h1 class="heading-small">Order Details</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Unspent Criminal Convictions, Alternative Sanctions or Penalties?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Date of Conviction</h1>
+            <p>1/1/2000</p>
+        </div>
+        <div class="column-full">
+            <h1 class="heading-small">Conviction Details</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Interviewed For or Charged With any Offence awaiting trial?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Date of the Interview or (alleged) Offence, Sanction or Penalty</h1>
+            <p>1/1/2000</p>
+        </div>
+        <div class="column-full">
+            <h1 class="heading-small">Details</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-medium">Organisation Details</h1>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Other sectors serviced</h1>
+            <p>Construction; Hospitality</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Written Agreement with Customers?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Other Persons with Significant Control?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-full">
+            <h1 class="heading-small">Details of Other PSCs</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Operates Multiple Branches?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Type of Multiple</h1>
+            <p>Franchise</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Number of controlled businesses</h1>
+            <p>5</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">&nbsp;</h1>
+            <p>&nbsp;</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Worker Source</h1>
+            <p>Non-EEA States</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Worker Origin Countries</h1>
+            <p>China; Thailand</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Basis of Supply</h1>
+            <p>Employee; Some other way</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Worker Contract</h1>
+            <p>Contract of employment</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Previously Been Banned From Trading?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Date of Ban</h1>
+            <p>1/1/2005</p>
+        </div>
+        <div class="column-full">
+            <h1 class="heading-small">Description of Ban</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Uses/Has Used Subcontractors?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Details of Subcontractors</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+    </div>
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-medium">Transport and Accommodation</h1>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Transports Workers?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Number of Vehicles</h1>
+            <p>5</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Transport Charges Deducted From Pay?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Transport Choice?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Provides Accommodation?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Number of Properties</h1>
+            <p>5</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Accommodation Charges Deducted From Pay?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Accommodation Choice?</h1>
+            <p>Yes</p>
+        </div>
+    </div>
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-medium">Overseas Organisation Details</h1>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Business Registered in Home Country?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-full">
+            <h1 class="heading-small">Registration Details</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Licence to Supply Workers Required?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-full">
+            <h1 class="heading-small">Licence Details</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Additional Registrations to Supply Workers Required?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-full">
+            <h1 class="heading-small">Registration Details</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Registration to Supply Workers Under EU Posted Worker Directive Required?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-full">
+            <h1 class="heading-small">Registration Details</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+    </div>
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-medium">Shellfish Organisation Details</h1>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Average Number of Shellfish Gatherers</h1>
+            <p>10</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Origin of Shellfish Gatherers</h1>
+            <p>China</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Previously Worked in Shellfish Gathering?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Date and Location</h1>
+            <p>1/1/2008, Dublin</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Permit Required?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Permit Approved?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Issuing Authority</h1>
+            <p>Some Authority</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Aware of HSE Guidelines?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-full">
+            <h1 class="heading-small">Transport Arrangements for Shellfish Gatherers</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+    </div>
+</main>
+<script type="text/javascript">
+    (function () {
+        var reasons = @Html.Raw(kvJson);
+        document.getElementById("statusReason").disabled = "disabled";
+
+        document.getElementById("NewLicenceStatus").addEventListener("click", function (e) {
+            var statusReasonDdl = document.getElementById("statusReason")
+            while (statusReasonDdl.hasChildNodes()) {
+                statusReasonDdl.removeChild(statusReasonDdl.lastChild);
+            }
+
+            if (reasons[e.target.value] && reasons[e.target.value]["reasons"].length) {
+                var blankOpt = document.createElement("option");
+                blankOpt.value = "";
+                blankOpt.text = "Please select...";
+                statusReasonDdl.add(blankOpt);
+                for (var i = 0; i < reasons[e.target.value]["reasons"].length; i++) {
+                    var opt = document.createElement("option");
+                    opt.value = reasons[e.target.value]["reasons"][i]["value"];
+                    opt.text = reasons[e.target.value]["reasons"][i]["text"];
+                    statusReasonDdl.add(opt);
+                }
+                statusReasonDdl.disabled = "";
+
+                if (reasons[e.target.value].noncompliant) {
+                    document.getElementById("standardCheckboxes").style.display = "block";
+                } else {
+                    document.getElementById("standardCheckboxes").style.display = "none";
+                }
+            } else {
+                statusReasonDdl.disabled = "disabled";
+                document.getElementById("standardCheckboxes").style.display = "none";
+            }
+        });
+    })();
+</script>

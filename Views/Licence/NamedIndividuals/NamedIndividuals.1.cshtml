@@ -1,0 +1,28 @@
+﻿@model GLAA.ViewModels.LicenceApplication.NamedIndividualCollectionViewModel
+
+@{
+    ViewBag.Title = "Named Individuals and Additional Job Titles";
+}
+
+<main id="content" role="main">
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-large">
+                @ViewBag.Title
+            </h1>
+            <p>For applications with a turnover less than £5 million a year, we require details of those individuals employed by your business who are authorised to negotiate with labour users and supply workers within the regulated sector. You must include the names of directors / partners already supplied who have the authority to undertake this activity.  You do not need to complete this section if your organisation does not have employees who fulfil this role (i.e. it is only you).</p>
+            <p>All applications which operate in the shellfish gathering sector must complete this section. If you are applying to use workers for gathering shellfish, we require the details of anyone who is authorised to act on your behalf (e.g. as a supervisor, intermediary).</p>
+            <p>The questions that will need to be answered for each individual include:</p>
+            <ul class="list-bullet">
+                <li>Their name, date of birth and phone number.</li>
+                <li>The GLAA security questions which will be used to determine whether an inspection is required, and what additional checks may be required.</li>
+            </ul>
+            <p>For applications for the agriculture, horticulture and food processing and packaging sectors, if your turnover is greater than £5 million, you may opt to provide the job titles (e.g. recruitment consultant) for your staff who are authorised to negotiate the supply of workers. Please indicate how many people are employed in this capacity in the space provided below. If you have identified more than one job title to list please add them in this section and use the continuation sheet if required.</p>
+            <p>This section does not apply for applications for the shellfish gathering sector.</p>
+            <p>You will need to provide the job title you use and the number of people currently employed within this capacity.  You will also need to answer the GLAA security questions in relation to these job holders to determine whether an inspection is required, and what additional checks may be required.</p>
+            <p>You can save and return to this section at a later date if required.</p>
+        </div>
+    </div>
+
+    <a id="StartSection" class="button button-start" href="@Url.Action("Apply/NamedIndividuals/Part/2", "Licence")">Start section</a>
+</main> 

@@ -1,0 +1,16 @@
+﻿@model GLAA.ViewModels.LicenceApplication.OffencesAwaitingTrialViewModel
+
+@if (Model.HasOffencesAwaitingTrial ?? false)
+{
+    <table class="check-your-answers">
+        <tbody>
+        @foreach (var uc in Model.OffencesAwaitingTrial)
+        {
+            <tr>
+                <td>@uc.Date</td>
+                <td>@uc.Description</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

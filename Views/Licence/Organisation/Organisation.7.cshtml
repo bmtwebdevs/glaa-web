@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Organisation - Part 6";
+    var switchValue = "true";
+}
+
+@model GLAA.ViewModels.LicenceApplication.AccommodatingWorkersViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                Will your workers be provided with accommodation or effectively
+                be provided with accommodation?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            <div class="form-group">
+                <fieldset>
+                    <legend>
+                        <span class="body-text"></span>
+                    </legend>
+                    @foreach (var option in Model.YesNo)
+                    {
+                        <div class="multiple-choice revealer">
+                            @Html.RadioButtonFor(x => x.AccommodatesWorkers, option.Value)
+                            @Html.Label(option.Text)
+                        </div>
+
+                        if (option.Value == switchValue)
+                        {
+                            <div class="panel panel-border-narrow js-hidden" id="accommodates-workers">                                                         
+                                @Html.TextFormGroupFor(x => x.NumberOfProperties)   
+                                @Html.RadioButtonFormGroupFor(x => x.AccommodationDeductedFromPay, Model.YesNo)                                
+                                @Html.RadioButtonFormGroupFor(x => x.AccommodationWorkersChoose, Model.YesNo)
+                            </div>
+                        }
+                    }
+                </fieldset>
+            </div>
+        </div>
+    </div>    
+    <button type="submit" class="button">Save and continue</button>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            hiddenContent.hideContent();
+            branchedQuestion.toggleBranch('.revealer > input[type="radio"]', '#accommodates-workers', @switchValue);
+        });
+    </script>
+}

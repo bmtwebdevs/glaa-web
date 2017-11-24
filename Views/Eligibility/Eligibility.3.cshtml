@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "What is your business turnover?";
+}
+
+@model GLAA.ViewModels.LicenceApplication.TurnoverViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                What is your business turnover?
+            </h1>
+        </div>
+
+        <div class="column-two-thirds">
+            @Html.RadioButtonFormGroupFor(x => x.TurnoverBand, Model.AvailableTurnoverBands, "Select the item which matches most closely your turnover")
+        </div>
+    </div>
+
+    <button type="submit" class="button">Continue</button>
+}

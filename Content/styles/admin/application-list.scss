@@ -1,0 +1,30 @@
+﻿h1 small,
+h2 small {
+    font-size: 0.5em;
+    font-weight: 700;
+}
+
+.link-view,
+td > .link {
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.link-view:hover,
+td > .link:hover {
+    text-decoration: underline;
+}
+
+.application-status {
+    P {
+        display: inline-block;
+        margin: 0.5em;
+    }
+
+    > .external-status {
+        height: 5px;
+        width: 5px;
+        margin: 0px 0px -6px 5px;
+        display: inline-block;
+    }
+}

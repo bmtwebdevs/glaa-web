@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Apply for a Licence";
+}
+
+@model GLAA.ViewModels.LicenceApplication.LicenceApplicationViewModel
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.Id)
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-xlarge">
+                Apply for a Licence
+            </h1>
+            <p class="lede">
+                This site is a prototype for the Apply for a GLAA Licence service
+            </p>
+        </div>
+        <div class="column-full">
+            <h2 class="heading-medium">Which activities need a licence?</h2>
+            <p>Our licensing scheme regulates businesses who provide workers to the fresh produce supply chain. This also includes non-edible crops such as bulbs, flowers and other plants.</p>
+            <p>The scheme ensures that businesses who supply workers (labour providers, gangmasters or agencies) and businesses who need workers (labour users, farmers, packhouses, factories) meet the employment standards that are required by law.</p>
+            <h2 class="heading-medium">Which sectors are covered by the scheme?</h2>
+            <p>A range of sectors within the fresh produce supply chain are regulated by licensing:</p>
+            <ul class="list-bullet">
+                <li>processing and packaging of all fresh food, drinks and other produce</li>
+                <li>agriculture</li>
+                <li>horticulture</li>
+                <li>shellfish gathering</li>
+            </ul>
+            <p>Anyone who supplies labour to these sectors will require a GLAA licence.</p>
+            <p>The scheme also covers anyone who uses labour to provide a service in the regulated sectors, for example harvesting or gathering shellfish.</p>
+            <p>If you have any doubts about whether you need a licence please check the 'Guidance on who needs a licence' document.</p>
+            <h2 class="heading-medium">Businesses based overseas</h2>
+            <p>A licence is needed for any work carried out in the UK, even if the business is located overseas. All workers, temporary or permanent are covered by the licensing scheme. Read our What if my business is not based in the UK? page for more information on supplying workers if your business is overseas.</p>
+            <h2 class="heading-medium">Exemptions from the scheme</h2>
+            <p>There are some circumstances where a licence is not required. These exclusions apply to specific situations. Read the Exclusions page for more details on the work that does not require a licence.</p>
+            <p>If you are unsure whether you need a licence, please contact us for guidance. It is a criminal offence to operate without a licence. For more information read our pages on offences and penalties.</p>
+            <h2 class="heading-medium">How do I apply?</h2>
+            <p>Register with the Government Gateway to create a user ID and password, which ensures your information is secure and confidential</p>
+            <p>Once you have your user ID you can log in to begin your application</p>
+            <p>If you are using the latest version of a web browser and experience any problems with your screen, read our guidance on how to resolve the issue.</p>
+            <h2 class="heading-medium">What do I need?</h2>
+            <p>Before you begin your application you will need to have details of your business such as your VAT registration number, turnover and unique tax reference number, and personal information such as the address, date of birth and national insurance number for the principal authority, directors and partners of the business.</p>
+            <p>The <a href="http://www.gla.gov.uk/media/3102/application-form-guidance-june-2017-version-2.pdf">application form guidance booklet</a> has detailed information on the questions you will be asked.</p>
+            <p>You will also need to make sure you meet the conditions of the <a href="http://www.gla.gov.uk/i-am-a/i-supply-workers/i-need-a-glaa-licence/licensing-standards/">licensing standards</a>.</p>
+            
+            <button type="submit" class="button button-start" role="button">Start / Continue my application</button>
+        </div>
+    </div>
+}
+
+

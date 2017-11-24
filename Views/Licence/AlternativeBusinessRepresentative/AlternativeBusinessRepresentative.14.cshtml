@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Principal Authority - Part 17";
+    var switchValue = "true";
+}
+
+@model GLAA.ViewModels.LicenceApplication.PassportViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                Do you have a passport?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            <div class="form-group">
+                <fieldset>
+                    <legend>
+                        <span class="body-text"></span>
+                    </legend>
+                    @foreach (var option in Model.YesNo)
+                    {
+                        <div class="multiple-choice">
+                            @Html.RadioButtonFor(x => x.HasPassport, option.Value, new { id = $"HasPassport_{option.Text}" })
+                            @Html.LabelFor(x => x.HasPassport, option.Text, new { @for = $"HasPassport_{option.Text}" })
+                        </div>
+
+                        if (option.Value == switchValue)
+                        {
+                            <div class="panel panel-border-narrow js-hidden" id="passport-detail">
+                                You will be required to download a copy of your passport prior to submitting this application form.
+                            </div>
+                        }
+                    }
+
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="button">Save and continue</button>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            hiddenContent.hideContent();
+            branchedQuestion.toggleBranch('.multiple-choice input', '#passport-detail', @switchValue);
+        });
+    </script>
+}

@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Resume Application";
+}
+
+@model GLAA.ViewModels.LicenceApplication.ResumeApplicationViewModel
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                Resume application
+            </h1>
+            <p class="lede">
+                If you already have an account you can login to resume your licence application.
+            </p>
+        </div>
+        <div class="column-two-thirds">
+            @Html.ValidationMessage("ResumeApplicationViewModel")
+            <div class="form-group">
+                @Html.LabelWithHintFor(x => x.ApplicationId)
+                @Html.TextBoxFor(x => x.ApplicationId, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="button">Resume application</button>
+}
+
+

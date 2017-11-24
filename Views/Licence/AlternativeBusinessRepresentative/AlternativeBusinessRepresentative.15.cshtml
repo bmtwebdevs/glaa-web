@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Do you require a visa or work permit to work in the UK?";
+    var switchValue = "true";
+}
+
+@model GLAA.ViewModels.LicenceApplication.RightToWorkViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                @ViewBag.Title
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            <div class="form-group">
+                <fieldset>
+                    <legend>
+                        <span class="error-message">
+                            <span class="field-validation-valid" data-valmsg-for="radio_list" data-valmsg-replace="true"></span>
+                        </span>
+                    </legend>
+                    @foreach (var option in Model.YesNo)
+                    {
+                        <div class="multiple-choice">
+                            @Html.RadioButtonFor(x => x.RequiresVisa, option.Value)
+                            @Html.Label(option.Text)
+                        </div>
+
+                        if (option.Value == switchValue)
+                        {
+                            <div class="panel panel-border-narrow js-hidden" id="visa-detail">
+                                @Html.TextAreaFormGroupFor(x => x.VisaDescription)
+                            </div>
+                        }
+                    }
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="button">Save and continue</button>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            hiddenContent.hideContent();
+            branchedQuestion.toggleBranch('.multiple-choice input', '#visa-detail', @switchValue);
+        });
+    </script>
+}

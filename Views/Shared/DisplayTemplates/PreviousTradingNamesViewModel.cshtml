@@ -1,0 +1,15 @@
+﻿@model GLAA.ViewModels.LicenceApplication.PreviousTradingNamesViewModel
+
+<table class="check-your-answers">
+    <tbody>
+        @foreach (var name in Model.PreviousTradingNames)
+        {
+            <tr>
+                <td>@name.BusinessName</td>
+                <td>@name.Town</td>
+                <td>@name.Country</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

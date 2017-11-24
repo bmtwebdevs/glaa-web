@@ -1,0 +1,11 @@
+﻿@model GLAA.ViewModels.LicenceApplication.TransportingWorkersViewModel
+
+@{
+    var text = "No";
+    if (Model?.TransportsWorkersToWorkplace != null && Model.TransportsWorkersToWorkplace.Value)
+    {
+        text = $"Yes";
+    }
+}
+
+@text

@@ -1,0 +1,53 @@
+﻿@model GLAA.ViewModels.LicenceApplication.OffencesAwaitingTrialViewModel
+
+@{
+    ViewBag.Title = "Offences that are awaiting trial or decisions on an alternative sanctions or penalties";
+    var conjunction = Model.OffencesAwaitingTrial.Any() ? "another" : "an";
+}
+
+@using (Html.BeginForm("ReviewNamedIndividualOffencesAwaitingTrial", "Licence", FormMethod.Post))
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                @ViewBag.Title
+            </h1>
+        </div>
+    </div>
+    <table class="check-your-answers" id="OffencesAwaitingTrial">
+        <thead>
+        <tr>
+            <th colspan="3">Alleged offences / sanctions / penalties</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var uc in Model.OffencesAwaitingTrial)
+        {
+            <tr>
+                <td>@uc.Description</td>
+                <td>@uc.Date.ToString()</td>
+                <td class="change-answer"><a href="@Url.Action($"Apply/NamedIndividual/OffenceAwaitingTrial/{uc.Id}")">Change or remove<span class="visually-hidden"> @uc.Description</span></a></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <div class="grid-row">
+        <div class="column-full">
+            <p>
+                <a class="button button-add-another" href="@Url.Action($"Apply/NamedIndividual/OffenceAwaitingTrial/0", "Licence")">Add @conjunction offence, alternative sanction or penalty</a>
+            </p>
+        </div>
+    </div>
+    <div class="grid-row">
+        <div class="column-full">
+            <p>
+                <button type="submit" class="button">Save and continue</button>
+            </p>
+        </div>
+    </div>
+    @Html.HiddenFor(m => m.HasOffencesAwaitingTrial)
+}
+

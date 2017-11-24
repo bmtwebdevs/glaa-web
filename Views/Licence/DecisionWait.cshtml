@@ -1,0 +1,21 @@
+﻿@model GLAA.ViewModels.LicenceApplication.LicenceStatusViewModel
+
+@{
+    ViewBag.Title = Model.Id <= 110 ? "Application not yet submitted" : "Application submitted";
+}
+
+<h1 class="heading-large">@ViewBag.Title</h1>
+@if (Model.Id <= 110)
+{
+    <p class="lede">
+        Once you have submitted your application you will be able to view progress on your application here.
+    </p>
+}
+<p>
+    The current status of your application is
+</p>
+@Html.DisplayFor(m => Model)
+@using (Html.BeginForm("TaskList", "Licence", FormMethod.Post))
+{
+    <button type="submit" class="button">Back to Task List</button>
+}

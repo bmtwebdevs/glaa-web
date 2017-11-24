@@ -1,0 +1,8 @@
+﻿@model GLAA.ViewModels.LicenceApplication.TurnoverViewModel
+
+@{
+    var text = Model.AvailableTurnoverBands.FirstOrDefault(m => Model.TurnoverBand.HasValue && m.Value == Model.TurnoverBand.ToString())?.Text;
+}
+
+@text
+

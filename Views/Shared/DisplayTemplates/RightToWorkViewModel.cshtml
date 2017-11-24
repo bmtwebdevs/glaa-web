@@ -1,0 +1,16 @@
+﻿@model GLAA.ViewModels.LicenceApplication.RightToWorkViewModel
+
+@{
+    var text = string.Empty;
+    if (Model.RequiresVisa.HasValue)
+    {
+        text = Model.RequiresVisa.Value ? "Yes" : "No";
+    }
+}
+
+@text
+@if (Model.RequiresVisa ?? false)
+{
+    <br />
+    @Model.VisaDescription
+}

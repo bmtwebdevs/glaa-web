@@ -1,0 +1,50 @@
+﻿$gutter: 30px;
+$gutter-one-quarter: $gutter/4;
+$gutter-one-third: $gutter/3;
+$gutter-half: $gutter/2;
+$gutter-two-thirds: $gutter - $gutter-one-third;
+
+.hub-actions {
+    width: 75%; /* this is just to wrap the dashboard until we work out what should actually be on here */
+    :after { /* to clearfix your ul list */
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    li {
+        display: block; /* inline-block have an extra 4px margin wich makes it harder to use in this situation */
+        width: 250px;
+        padding: 10px 5px;
+        float: left; /* if you use block elements you have to float them */
+    }
+
+
+    .dashboard-panel {
+        position: relative;
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        height: 150px;
+        background-color: green;
+        padding: $gutter-half;
+        color: white;
+        font-weight: 700;
+        font-size: 1em;
+        text-decoration: none;
+        border: none;
+
+        .count {
+            font-weight: 700;
+            font-size: 2em;
+            display: block;
+            margin-bottom: $gutter-half;
+        }
+
+        .graphic {
+            position: absolute;
+            top: $gutter-half;
+            right: $gutter-two-thirds;
+        }
+    }
+}

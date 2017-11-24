@@ -1,0 +1,15 @@
+﻿@model GLAA.ViewModels.LicenceApplication.PreviouslyWorkedInShellfishViewModel
+
+@{
+    var text = "No";
+    if (Model?.PreviouslyWorkedInShellfish ?? false)
+    {
+        text = $"Yes, {Model.GatheringDate}";
+    }
+}
+@text
+@if (Model?.PreviouslyWorkedInShellfish ?? false)
+{
+    <br/>
+    @Model.GatheringLocation
+}

@@ -1,0 +1,12 @@
+﻿@model GLAA.ViewModels.LicenceApplication.TimeSpanViewModel
+
+<div class="form-date">
+    <div class="form-group form-group-month">
+        @Html.LabelFor(x => x.Months)
+        @Html.TextBoxFor(x => x.Months, new { @class = "form-control date-part" })
+    </div>
+    <div class="form-group form-group-year">
+        @Html.LabelFor(x => x.Years)
+        @Html.TextBoxFor(x => x.Years, new { @class = "form-control date-part" })
+    </div>
+</div>

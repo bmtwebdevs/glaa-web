@@ -1,0 +1,72 @@
+﻿@model GLAA.ViewModels.LicenceApplication.AlternativeBusinessRepresentativeCollectionViewModel
+
+@{
+    var conjunction = Model.AlternativeBusinessRepresentatives.Any() ? "another" : "an";
+    string yesNo;
+    if (!Model.HasAlternativeBusinessRepresentatives.HasValue)
+    {
+        yesNo = string.Empty;
+    }
+    else if (Model.HasAlternativeBusinessRepresentatives.Value)
+    {
+        yesNo = "Yes";
+    }
+    else
+    {
+        yesNo = "No";
+    }
+}
+
+<table class="check-your-answers">
+    <thead>
+        <tr>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Html.LabelFor(x => x.HasAlternativeBusinessRepresentatives)</td>
+            <td>@yesNo</td>
+            <td class="change-answer"><a href="@Url.Action($"Apply/AlternativeBusinessRepresentatives/Part/2", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(x => x.HasAlternativeBusinessRepresentatives)</span></a></td>
+        </tr>
+    </tbody>
+</table>
+@if (Model.HasAlternativeBusinessRepresentatives.HasValue && Model.HasAlternativeBusinessRepresentatives.Value)
+{
+    <table class="check-your-answers">
+        <thead>
+            <tr>
+                <th colspan="2">Current Alternative Business Representatives</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var abr in Model.AlternativeBusinessRepresentatives)
+            {
+                var abrName = abr.FullName?.FullName ?? "Name not set";
+                <tr>
+                    <td>@abrName</td>
+                    <td class="change-answer"><a href="@Url.Action($"Apply/AlternativeBusinessRepresentative/Review/{abr.Id}", "Licence")">Change or remove<span class="visually-hidden"> @abr.FullName.FullName</span></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    if (Model.AlternativeBusinessRepresentatives.Count() < 2)
+    {
+        <div class="grid-row">
+            <div class="column-full">
+                <p>
+                    <a class="button button-add-another" href="@Url.Action("Apply/AlternativeBusinessRepresentative/Part/1", "Licence")">Add @conjunction Alternative Business Representative</a>
+                </p>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="grid-row">
+            <div class="column-full">
+                <p class="lede">You have already added two Alternative Business Representatives.</p>
+            </div>
+        </div>
+    }
+}
+

@@ -1,0 +1,28 @@
+﻿@model GLAA.ViewModels.LicenceApplication.DirectorOrPartnerViewModel
+
+@{
+    ViewBag.Title = "Director or Partner Summary";
+}
+
+@using (Html.BeginForm())
+{
+    <main id="content" role="main">
+        <div class="grid-row">
+            <div class="column-two-thirds">
+                @Html.Partial("_GdsValidationSummary")
+            </div>
+            <div class="column-full">
+                <h1 class="heading-large">
+                    Check your answers for this person
+                </h1>
+                <p><button type="submit" class="button button-add-another">Remove this person</button></p>
+                @Html.DisplayFor(m => m)
+                <h2 class="heading-medium">Complete this section</h2>
+                <p class="text">Once you are happy with your answers for this director or partner, review your answers for the section.</p>
+                <div class="form-group">
+                    <a href="@Url.Action($"Apply/DirectorsOrPartners/Part/3")">Return to directors and partners list</a>
+                </div>
+            </div>
+        </div>
+    </main>
+}

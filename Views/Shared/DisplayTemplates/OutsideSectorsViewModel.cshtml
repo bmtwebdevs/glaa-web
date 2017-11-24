@@ -1,0 +1,17 @@
+﻿@model GLAA.ViewModels.LicenceApplication.OutsideSectorsViewModel
+
+@if (Model?.SuppliesWorkersOutsideLicensableAreas != null && Model.SuppliesWorkersOutsideLicensableAreas.Value)
+{
+    @Html.DisplayFor(m => m.SelectedSectors, "ListCheckboxListItem")
+    if (!string.IsNullOrEmpty(Model.OtherSector))
+    {
+        var sep = Model.SelectedSectors.Any() ? ", " : string.Empty;
+        var other = $"{sep}{Model.OtherSector}";
+        @other
+    }
+}
+else
+{    
+    var text = @"No";
+    @text
+}

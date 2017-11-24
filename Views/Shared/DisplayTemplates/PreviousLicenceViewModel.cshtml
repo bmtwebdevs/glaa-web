@@ -1,0 +1,16 @@
+﻿@model GLAA.ViewModels.LicenceApplication.PreviousLicenceViewModel
+
+@{
+    var text = "No";
+    if (Model?.HasPreviouslyHeldLicence != null && Model.HasPreviouslyHeldLicence.Value)
+    {
+        text = "Yes";
+    }
+}
+
+@text
+@if (Model?.HasPreviouslyHeldLicence != null && Model.HasPreviouslyHeldLicence.Value)
+{
+    <br/>
+    @Model.PreviousLicenceDescription
+}

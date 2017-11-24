@@ -1,0 +1,14 @@
+﻿@model GLAA.ViewModels.LicenceApplication.UnspentConvictionsViewModel
+
+<table class="check-your-answers">
+    <tbody>
+        @foreach (var uc in Model.UnspentConvictions)
+        {
+            <tr>
+                <td>@uc.Date</td>
+                <td>@uc.Description</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

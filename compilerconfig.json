@@ -1,0 +1,94 @@
+﻿[
+  {
+    "outputFile": "Content/styles/bundled-styles.css",
+    "inputFile": "Content/styles/bundled-styles.scss"
+  },
+  {
+    "outputFile": "Content/styles/gov.uk-bundled-styles.css",
+    "inputFile": "Content/styles/gov.uk-bundled-styles.scss"
+  },
+  {
+    "outputFile": "Content/styles/govuk/_colours.css",
+    "inputFile": "Content/styles/govuk/_colours.scss"
+  },
+  {
+    "outputFile": "Content/styles/govuk/_conditionals.css",
+    "inputFile": "Content/styles/govuk/_conditionals.scss"
+  },
+  {
+    "outputFile": "Content/styles/govuk/_css3.css",
+    "inputFile": "Content/styles/govuk/_css3.scss"
+  },
+  {
+    "outputFile": "Content/styles/govuk/_device-pixels.css",
+    "inputFile": "Content/styles/govuk/_device-pixels.scss"
+  },
+  {
+    "outputFile": "Content/styles/govuk/_font_stack.css",
+    "inputFile": "Content/styles/govuk/_font_stack.scss"
+  },
+  {
+    "outputFile": "Content/styles/govuk/_grid_layout.css",
+    "inputFile": "Content/styles/govuk/_grid_layout.scss"
+  },
+  {
+    "outputFile": "Content/styles/govuk/_helpers.css",
+    "inputFile": "Content/styles/govuk/_helpers.scss"
+  },
+  {
+    "outputFile": "Content/styles/govuk/_measurements.css",
+    "inputFile": "Content/styles/govuk/_measurements.scss"
+  },
+  {
+    "outputFile": "Content/styles/govuk/_shims.css",
+    "inputFile": "Content/styles/govuk/_shims.scss"
+  },
+  {
+    "outputFile": "Content/styles/govuk/_typography.css",
+    "inputFile": "Content/styles/govuk/_typography.scss"
+  },
+  {
+    "outputFile": "Content/styles/govuk/_url-helpers.css",
+    "inputFile": "Content/styles/govuk/_url-helpers.scss"
+  },
+  {
+    "outputFile": "Content/styles/govuk-overrides.css",
+    "inputFile": "Content/styles/govuk-overrides.scss"
+  },
+  {
+    "outputFile": "Content/styles/administration-styles.css",
+    "inputFile": "Content/styles/administration-styles.scss"
+  },
+  {
+    "outputFile": "Content/styles/admin/layout.css",
+    "inputFile": "Content/styles/admin/layout.scss"
+  },
+  {
+    "outputFile": "Content/styles/admin/dashboard.css",
+    "inputFile": "Content/styles/admin/dashboard.scss"
+  },
+  {
+    "outputFile": "Content/styles/admin/application-list.css",
+    "inputFile": "Content/styles/admin/application-list.scss"
+  },
+  {
+    "outputFile": "Content/styles/licence/statuses.css",
+    "inputFile": "Content/styles/licence/statuses.scss"
+  },
+  {
+    "outputFile": "Content/styles/glaa.css",
+    "inputFile": "Content/styles/glaa.scss"
+  },
+  {
+    "outputFile": "Content/styles/accordion.css",
+    "inputFile": "Content/styles/accordion.scss"
+  },
+  {
+    "outputFile": "Content/styles/admin/admin-navigation.css",
+    "inputFile": "Content/styles/admin/admin-navigation.scss"
+  },
+  {
+    "outputFile": "Content/styles/sidebar-navigation.css",
+    "inputFile": "Content/styles/sidebar-navigation.scss"
+  }
+]

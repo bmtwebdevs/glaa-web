@@ -1,0 +1,15 @@
+﻿@model GLAA.ViewModels.LicenceApplication.PreviousTradingNamesViewModel
+
+@{
+    string text;
+    if (Model?.HasPreviousTradingNames != null && Model.HasPreviousTradingNames.Value)
+    {
+        text = $"{Model.AlternativeBusinessName}, operating in {Model.AlternativeBusinessTown}, {Model.AlternativeBusinessCountry}";
+    }
+    else
+    {
+        text = "N/A";
+    }
+}
+
+@text

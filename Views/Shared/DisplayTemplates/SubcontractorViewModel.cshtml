@@ -1,0 +1,12 @@
+﻿@model GLAA.ViewModels.LicenceApplication.SubcontractorViewModel
+
+@{
+    var text = (Model?.UsesSubcontractors ?? false) ? "Yes" : "No";
+}
+@text
+
+@if (Model?.UsesSubcontractors ?? false)
+{
+    <br/>
+    @Model.SubcontractorNames
+}

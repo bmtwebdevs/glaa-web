@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Principal Authority - Part 19";
+    var switchValue = "true";
+}
+
+@model GLAA.ViewModels.LicenceApplication.UndischargedBankruptViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                Are you an un-discharged bankrupt?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            <div class="form-group">
+                <fieldset>
+                    <legend>
+                        <span class="body-text"></span>
+                    </legend>
+                    @foreach (var option in Model.YesNo)
+                    {
+                        <div class="multiple-choice">
+                            @Html.RadioButtonFor(x => x.IsUndischargedBankrupt, option.Value)
+                            @Html.Label(option.Text)
+                        </div>
+
+                        if (option.Value == switchValue)
+                        {
+                            <div class="panel panel-border-narrow js-hidden" id="bankrupt-detail">
+                                @Html.DateFormGroupFor(x => x.BankruptcyDate)
+                                @Html.TextFormGroupFor(x => x.BankruptcyNumber)
+                            </div>
+                        }
+                    }
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="button">Save and continue</button>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            hiddenContent.hideContent();
+            branchedQuestion.toggleBranch('.multiple-choice input', '#bankrupt-detail', @switchValue);
+        });
+    </script>
+}
+
+

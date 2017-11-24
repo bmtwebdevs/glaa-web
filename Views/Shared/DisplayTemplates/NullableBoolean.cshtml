@@ -1,0 +1,19 @@
+﻿@model bool?
+    
+@{
+    string text;
+    if (!Model.HasValue)
+    {
+        text = string.Empty;
+    }
+    else if (Model.Value)
+    {
+        text = "Yes";
+    }
+    else
+    {
+        text = "No";
+    }
+}
+
+@text

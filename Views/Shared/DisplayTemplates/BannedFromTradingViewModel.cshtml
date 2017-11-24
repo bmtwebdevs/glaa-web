@@ -1,0 +1,16 @@
+﻿@model GLAA.ViewModels.LicenceApplication.BannedFromTradingViewModel
+    
+@{
+    var text = "No";
+    if (Model.HasBeenBanned ?? false)
+    {
+        text = $"Yes, {Model.DateOfBan}";
+    }
+}
+
+@text
+@if (Model.HasBeenBanned ?? false)
+{
+    <br />
+    @Model.BanDescription
+}

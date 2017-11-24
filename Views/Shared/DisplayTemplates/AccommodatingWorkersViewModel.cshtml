@@ -1,0 +1,11 @@
+﻿@model GLAA.ViewModels.LicenceApplication.AccommodatingWorkersViewModel
+
+@{
+    var text = "No";
+    if (Model?.AccommodatesWorkers != null && Model.AccommodatesWorkers.Value)
+    {
+        text = $"Yes";
+    }
+}
+
+@text

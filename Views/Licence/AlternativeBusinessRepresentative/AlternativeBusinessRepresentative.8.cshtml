@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Alternative Business Representative - Part 8";
+}
+
+@model GLAA.ViewModels.LicenceApplication.BusinessPhoneNumberViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                What is your business phone number?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            @Html.TextFormGroupFor(x => x.BusinessPhoneNumber)
+        </div>
+    </div>
+    
+    <button type="submit" class="button">Save and continue</button>
+}

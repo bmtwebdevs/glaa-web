@@ -1,0 +1,11 @@
+﻿@model GLAA.ViewModels.LicenceApplication.UndischargedBankruptViewModel
+
+@{
+    var text = "No";
+    if (Model?.IsUndischargedBankrupt != null && Model.IsUndischargedBankrupt.Value)
+    {
+        text = $"Yes (no. {Model.BankruptcyNumber}, registered {Model.BankruptcyDate})";
+    }
+}
+
+@text

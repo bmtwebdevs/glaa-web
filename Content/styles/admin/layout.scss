@@ -1,0 +1,67 @@
+﻿/*
+    Allowed a wider screen for admin layouts
+*/
+
+#global-header .header-wrapper,
+#global-header-bar,
+.phase-banner {
+    max-width: none;
+    margin: 0;
+}
+
+#global-header.with-proposition .header-wrapper .header-global {
+    width: 18%;
+}
+
+#global-header.with-proposition .header-wrapper .header-proposition {
+    width: 82%;
+}
+
+.admin-menu {
+    float: left;
+    width: 15%;
+
+    ul {
+        padding: 42px;
+    }
+
+    li {
+        border-top: 1px solid #bfc1c3;
+
+        a {
+            color: #005ea5;
+            font-size: 16px;
+            line-height: 1.25;
+            font-weight: 700;
+            text-transform: none;
+            text-decoration: none;
+        }
+
+        a.active {
+            color: #000000;
+        }
+    }
+
+    li:last-child {
+        border-bottom: 1px solid #bfc1c3;
+    }
+}
+
+.admin-container {
+    float: left;
+    width: 85%;
+}
+
+.admin-heading h1 {
+    border-bottom: 3px black solid;
+    margin-bottom: 0;
+    padding-bottom: 10px;
+}
+
+.admin-page-title {
+    margin-top: 10px;
+}
+
+.licence-wrapper {
+    padding-right: 4em;
+}

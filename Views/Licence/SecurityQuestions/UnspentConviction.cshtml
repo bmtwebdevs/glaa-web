@@ -1,0 +1,30 @@
+﻿@model GLAA.ViewModels.LicenceApplication.UnspentConvictionViewModel
+
+@{
+    ViewBag.Title = "Details of the unspent criminal conviction or alternative sanctions or penalties for proven offences";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                @ViewBag.Title
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            @Html.TextAreaFormGroupFor(x => x.Description)
+            @Html.DateFormGroupFor(x => x.Date)
+        </div>
+    </div>
+    if (Model.Id != 0)
+    {
+        <!--TODO Putting the remove first is more consistent with the rest of the application but also makes it the default action for <ENTER> which might be confusing-->
+        <p><button type="submit" class="button button-add-another" formaction="@Url.Action("RemoveConviction", "Licence", FormMethod.Post)">Remove</button></p>
+    }
+    <p><button type="submit" class="button" formaction="@Url.Action("AddConviction", "Licence", FormMethod.Post)">Save and continue</button></p>
+}
+

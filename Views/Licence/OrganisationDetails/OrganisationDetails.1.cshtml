@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Organisation Details";
+}
+
+@model GLAA.ViewModels.LicenceApplication.OrganisationDetailsViewModel
+
+<main id="content" role="main">
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-large">
+                @ViewBag.Title
+            </h1>
+            <p>In this section you will be asked questions about your organisation:</p>
+            <ul class="list-bullet">
+                <li>The organisation’s address and contact details.</li>
+                <li>The legal status of your organisation.</li>
+                <li>Companies House number (if this is relevant to your business).</li>
+                <li>PAYE registration number.</li>
+                <li>VAT registration number.</li>
+                <li>Unique Tax Reference number.</li>
+                <li>The countries your workers will be working in.</li>
+            </ul>
+            <p>You can save and return to this section at a later date if required.</p>
+        </div>
+    </div>
+
+    <a id="StartSection" class="button button-start" href="@Url.Action("Apply/OrganisationDetails/Part/2", "Licence")">Start section</a>
+</main>    

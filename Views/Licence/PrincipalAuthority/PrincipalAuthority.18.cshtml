@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Principal Authority - Part 18";
+    var switchValue = 2;
+}
+
+@model GLAA.ViewModels.LicenceApplication.PrincipalAuthorityRightToWorkViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                Do you have the right to work in the UK?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            <div class="form-group">
+                <fieldset>
+                    <legend>
+                        <span class="error-message">
+                            <span class="field-validation-valid" data-valmsg-for="radio_list" data-valmsg-replace="true"></span>
+                        </span>
+                    </legend>
+                    @foreach (var status in Model.AvailablePermissionToWork)
+                    {
+                        <div class="multiple-choice">
+                            @Html.RadioButtonFor(x => x.RightToWorkInUk, status.Id)
+                            @Html.Label(status.Name)
+                        </div>
+                        if (status.Name == "Yes - I have a visa, work permit or other form of clearance to work")
+                        {
+                            switchValue = status.Id;
+                            <div class="panel panel-border-narrow js-hidden" id="visa-info">
+                                @Html.TextFormGroupFor(x => x.VisaNumber)
+                                @Html.TimeSpanFormGroupFor(x => x.LengthOfUKWork)
+                                @Html.TextFormGroupFor(x => x.ImmigrationStatus)
+                                @Html.DateFormGroupFor(x => x.LeaveToRemainTo)
+                            </div>
+                        }
+                    }
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="button">Save and continue</button>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            hiddenContent.hideContent();
+            branchedQuestion.toggleBranch('.multiple-choice input', '#visa-info', @switchValue);
+        });
+    </script>
+}

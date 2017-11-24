@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "What's needed";
+}
+@using (Html.BeginForm("Introduction", "Eligibility", FormMethod.Get))
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            <h1 class="heading-xlarge">What's needed</h1>
+            <p>
+                Before you begin your application you will need to have details of your business such as your VAT registration number, turnover and unique tax reference number, and personal information such as the address, date of birth and national insurance number for the principal authority, directors and partners of the business.
+            </p>
+            <p>
+                The application form guidance booklet has detailed information on the questions you will be asked.
+            </p>
+            <p>
+                You will also need to make sure you meet the conditions of the licensing standards
+            </p>
+            <h2 class="heading-medium">Apply for a licence</h2>
+            <button class="button button-start" type="submit" role="button">Start now</button>
+        </div>
+        <div class="column-third">
+            <aside class="govuk-related-items add-heading-medium js-stick-at-top-when-scrolling">
+                <h2>Further Information</h2>
+                <nav>
+                    <ul>
+                        <li><a href="@Url.Action("WhatIsCovered")">What's covered by the GLAA?</a></li>
+                        <li><a href="@Url.Action("OverseasBusiness")">My business is based overseas</a></li>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
+    </div>
+}

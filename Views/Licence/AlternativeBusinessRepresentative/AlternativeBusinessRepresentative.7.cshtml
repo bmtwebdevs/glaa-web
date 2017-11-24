@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Alternative Business Representative - Part 7";
+}
+
+@model GLAA.ViewModels.LicenceApplication.AddressViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                What is your postcode?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            @Html.EditorFor(x => x)
+            @*<p class="lede">We can try to lookup your address if you are a UK based organisation.</p>
+            @Html.TextFormGroupFor(x => x.Postcode)
+            <div class="form-group">
+                <div class="multiple-choice">
+                    @Html.CheckBoxFor(x => x.NonUK)
+                    @Html.Label("Non UK")
+                </div>
+            </div>*@
+        </div>
+    </div>
+    
+    <button type="submit" class="button">Save and continue</button>
+}

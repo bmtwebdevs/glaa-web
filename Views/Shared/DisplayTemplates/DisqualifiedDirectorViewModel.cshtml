@@ -1,0 +1,16 @@
+﻿@model GLAA.ViewModels.LicenceApplication.DisqualifiedDirectorViewModel
+
+@{
+    var text = "No";
+    if (Model?.IsDisqualifiedDirector != null && Model.IsDisqualifiedDirector.Value)
+    {
+        text = $"Yes";
+    }
+}
+
+@text
+@if (Model?.IsDisqualifiedDirector != null && Model.IsDisqualifiedDirector.Value)
+{
+    <br/>
+    @Model.DisqualificationDetails
+}

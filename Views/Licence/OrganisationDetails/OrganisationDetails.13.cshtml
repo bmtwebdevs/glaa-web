@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Organisation Details - Part 15";
+}
+
+@model GLAA.ViewModels.LicenceApplication.TaxReferenceViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>        
+        <div class="column-full">
+            <h1 class="heading-large">
+                What is your tax reference number?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            <div class="form-group">
+                <div class="form-group">
+                    @Html.LabelWithHintFor(x => x.TaxReferenceNumber)
+                    @Html.TextBoxFor(x => x.TaxReferenceNumber, new {@class = "form-control"})
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="button">Save and continue</button>
+}

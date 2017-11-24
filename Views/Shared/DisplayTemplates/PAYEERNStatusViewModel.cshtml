@@ -1,0 +1,16 @@
+﻿@model GLAA.ViewModels.LicenceApplication.PAYEERNStatusViewModel
+
+@{
+    string text;
+
+    if (Model.HasPAYEERNNumber.HasValue && Model.HasPAYEERNNumber.Value)
+    {
+        text = $"{Model.PAYEERNNumber}, registered {Model.PAYEERNRegistrationDate}";
+    }
+    else
+    {
+        text = "Not registered";
+    }
+}
+
+@text

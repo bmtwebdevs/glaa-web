@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Organisation - Part 10";
+    var switchValue = "true";
+}
+
+@model GLAA.ViewModels.LicenceApplication.BannedFromTradingViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                Has your organisation ever been banned from trading?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            <div class="form-group">
+                <fieldset>
+                    <legend>
+                        <span class="body-text"></span>
+                    </legend>
+                    @foreach (var option in Model.YesNo)
+                    {
+                        <div class="multiple-choice revealer">
+                            @Html.RadioButtonFor(x => x.HasBeenBanned, option.Value, new { id = $"HasBeenBanned_{option.Text}" })
+                            @Html.LabelFor(x => x.HasBeenBanned, option.Text, new { @for = $"HasBeenBanned_{option.Text}" })
+                        </div>
+
+                        if (option.Value == switchValue)
+                        {
+                            <div class="panel panel-border-narrow js-hidden" id="ban-details">  
+                                @Html.DateFormGroupFor(x => x.DateOfBan)                          
+                                @Html.TextFormGroupFor(x => x.BanDescription)   
+                            </div>
+                        }
+                    }
+                </fieldset>
+            </div>
+        </div>
+    </div>    
+    <button type="submit" class="button">Save and continue</button>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            hiddenContent.hideContent();
+            branchedQuestion.toggleBranch('.revealer > input[type="radio"]', '#ban-details', @switchValue);
+        });
+    </script>
+}

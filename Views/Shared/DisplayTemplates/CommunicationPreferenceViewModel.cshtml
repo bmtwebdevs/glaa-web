@@ -1,0 +1,4 @@
+﻿@model GLAA.ViewModels.LicenceApplication.CommunicationPreferenceViewModel
+
+@(Model.AvailableCommunicationPreferences.FirstOrDefault(m => Model.CommunicationPreference.HasValue && m.Value == ((int)Model.CommunicationPreference).ToString())?.Text)
+

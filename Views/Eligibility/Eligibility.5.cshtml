@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Summary of whether you need a licence";
+}
+
+@model GLAA.ViewModels.LicenceApplication.EligibilityViewModel
+
+<main id="content" role="main">
+    <div class="grid-row">
+        <div class="column-full">
+            <br />
+            <p>
+                <a href="@Url.Action("TaskList", "Licence")">Return to Task List</a>
+            </p>
+            <h1 class="heading-large">
+                Check your answers for this section
+            </h1>
+            @Html.DisplayFor(m => m)
+            <p>
+                <a class="button" href="@Url.Action("Index", "Declaration")">Go to next section</a>
+            </p>
+        </div>
+    </div>
+</main>

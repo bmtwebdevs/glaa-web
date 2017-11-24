@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Overseas businesses";
+}
+@using (Html.BeginForm("Introduction", "Eligibility", FormMethod.Get))
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            <h1 class="heading-xlarge">Overseas businesses</h1>
+            <p>
+                A licence is needed for any work carried out in the UK, even if the business is located overseas.
+                All workers, temporary or permanent are covered by the licensing scheme.
+                Read our What if my business is not based in the UK?
+                page for more information on supplying workers if your business is overseas.
+            </p>
+            <h2 class="heading-medium">Exemptions from the scheme</h2>
+            <p>
+                There are some circumstances where a licence is not required. These exclusions apply to specific situations.
+                Read the Exclusions page for more details on the work that does not require a licence.
+            </p>
+            <p>
+                If you are unsure whether you need a licence, please contact us for guidance.
+                It is a criminal offence to operate without a licence.
+                For more information read our pages on offences and penalties.
+            </p>
+            <h2 class="heading-medium">Apply for a licence</h2>
+            <button class="button button-start" type="submit" role="button">Start now</button>
+        </div>
+        <div class="column-third">
+            <aside class="govuk-related-items add-heading-medium js-stick-at-top-when-scrolling">
+                <h2>Further Information</h2>
+                <nav>
+                    <ul>
+                        <li><a href="@Url.Action("WhatIsCovered")">What's covered by the GLAA?</a></li>
+                        <li><a href="@Url.Action("WhatDoINeed")">What do I need to complete an application</a></li>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
+    </div>
+}

@@ -1,0 +1,13 @@
+﻿@using GLAA.Domain.Models
+@model GLAA.ViewModels.LicenceApplication.LegalStatusViewModel
+
+@{
+    var text = Model.AvailableLegalStatuses.FirstOrDefault(m => Model.LegalStatus.HasValue && m.Id == (int)Model.LegalStatus)?.Name;
+
+    if (Model != null && Model.LegalStatus == LegalStatusEnum.LimitedCompany)
+    {
+        text = $"{text} (no. {Model.CompaniesHouseNumber}, registered {Model.CompanyRegistrationDate})";
+    }
+}
+
+@text

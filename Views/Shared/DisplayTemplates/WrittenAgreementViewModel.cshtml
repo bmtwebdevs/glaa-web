@@ -1,0 +1,7 @@
+﻿@model GLAA.ViewModels.LicenceApplication.WrittenAgreementViewModel
+
+@{
+    var text = Model?.HasWrittenAgreementsInPlace != null && Model.HasWrittenAgreementsInPlace.Value ? "Yes" : "No";
+}
+
+@text

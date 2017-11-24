@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Organisation - Part 4";
+    var switchValue = "true";
+}
+
+@model GLAA.ViewModels.LicenceApplication.MultipleBranchViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                Do you have multiple branches, franchises that are controlled by the applicant business?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            <div class="form-group">
+                <fieldset>
+                    <legend>
+                        <span class="body-text">Please refer to the guidance for the definition of PSC</span>
+                    </legend>
+                    @foreach (var option in Model.YesNo)
+                    {
+                        <div class="multiple-choice">
+                            @Html.RadioButtonFor(x => x.HasMultiples, Model.HasMultiples ?? false)
+                            @Html.Label(option.Text)
+                        </div>
+
+                        if (option.Value == switchValue)
+                        {
+                            <div class="panel panel-border-narrow js-hidden" id="multiple-types">
+                                <div class="form-group">
+                                    <fieldset>
+                                        <div class="column-full">
+                                            <h1 class="heading-large">
+                                                What sectors do you operate in?
+                                            </h1>
+                                        </div>
+                                        <div class="column-two-thirds">
+                                            @Html.CheckBoxFormGroupFor(x => x.SelectedMultiples, Model.SelectedMultiples)
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                @Html.TextFormGroupFor(x => x.OtherMultiple)
+                                @Html.TextFormGroupFor(x => x.NumberOfMultiples)
+                            </div>
+                        }
+                    }
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    
+    //TODO, need to set the formaction here based on whether there is shellfish selected in the industies collection
+    <button type="submit" class="button">Save and continue</button>
+}
+
+@section scripts
+{    
+    <script>
+        $(document).ready(function () {
+            hiddenContent.hideContent();
+            branchedQuestion.toggleBranch('.multiple-choice input[type="radio"]', '#multiple-types', @switchValue);
+        });
+    </script>
+}

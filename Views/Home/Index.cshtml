@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Apply for a GLAA licence";
+}
+
+<div class="grid-row">
+    <div class="column-two-thirds">
+        <h1 class="heading-xlarge">
+            Apply for a GLAA licence
+        </h1>
+        <p class="lede">
+            Use this service to:
+        </p>
+
+        <ul class="list list-bullet">
+            <li>Apply for a licence in a regulated sector</li>
+            <li>Check on my current licence situation</li>
+        </ul>
+        <br />
+        <div class="panel panel-border-wide">
+            <p class="font-xsmall">
+                Applying for a licence can take on average 1 hour 30 minutes.
+                Your progress is automatically saved and you can return to your application over a period of 20 days.
+            </p>
+        </div>
+        <br />
+        <p>
+            <a class="button button-start" href="@Url.Action("Introduction", "Eligibility")" role="button">Start now</a>
+        </p>
+
+        <h2 class="heading-medium">Before you start</h2>
+
+        <ul class="list">
+            <li>
+                <a href="@Url.Action("WhatDoINeed", "Eligibility")">What do I need to complete an application?</a>
+            </li>
+            <li>
+                <a href="@Url.Action("WhatIsCovered", "Eligibility")">What's covered by the Gangmasters &amp; Labour Abuse Authority?</a>
+            </li>
+            <li>
+                <a href="@Url.Action("OverseasBusiness", "Eligibility")">My business is based overseas</a>
+            </li>
+        </ul>
+
+        <p class="font-xsmall">
+            For regular updates about the Gangmasters &amp; Labour Abuse Authority please visit the informational website <a href="http://www.gla.gov.uk/">http://www.gla.gov.uk/</a>
+        </p>
+
+    </div>
+    <div class="column-third">
+        <aside class="govuk-related-items add-heading-medium js-stick-at-top-when-scrolling">
+            <h2>Further Information</h2>
+            <nav>
+                <ul>
+                    <li><a href="http://www.gla.gov.uk/media/3180/licensing-standards-may-2012-reprinted-june-2017.pdf">GLAA Licensing Guidelines</a></li>
+                    <li><a href="@Url.Action("Resume", "Licence")">Resume Application</a></li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+</div>

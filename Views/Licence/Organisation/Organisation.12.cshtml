@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Organisation - Part 11";
+    var switchValue = "true";
+}
+
+@model GLAA.ViewModels.LicenceApplication.SubcontractorViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                Has the organisation used subcontractors in the last 12 months?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            <div class="form-group">
+                <fieldset>
+                    <legend>
+                        <span class="body-text"></span>
+                    </legend>
+                    @foreach (var option in Model.YesNo)
+                    {
+                        <div class="multiple-choice revealer">
+                            @Html.RadioButtonFor(x => x.UsesSubcontractors, option.Value, new { id = $"UsesSubcontractors_{option.Text}" })
+                            @Html.LabelFor(x => x.UsesSubcontractors, option.Text, new { @for = $"UsesSubcontractors_{option.Text}" })
+                        </div>
+
+                        if (option.Value == switchValue)
+                        {
+                            <div class="panel panel-border-narrow js-hidden" id="subcontractor-details">                                                         
+                                @Html.TextFormGroupFor(x => x.SubcontractorNames)   
+                            </div>
+                        }
+                    }
+                </fieldset>
+            </div>
+        </div>
+    </div>    
+    <button type="submit" class="button">Save and continue</button>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            hiddenContent.hideContent();
+            branchedQuestion.toggleBranch('.revealer > input[type="radio"]', '#subcontractor-details', @switchValue);
+        });
+    </script>
+}

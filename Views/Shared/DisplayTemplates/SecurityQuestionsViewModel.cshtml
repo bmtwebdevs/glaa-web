@@ -1,0 +1,71 @@
+﻿@model GLAA.ViewModels.LicenceApplication.SecurityQuestionsViewModel
+
+<table class="check-your-answers">
+    <thead>
+        <tr>
+            <th colspan="3">Security Questions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Previous trading name</td>
+            <td>@Html.DisplayFor(m => m.TradedUnderAnotherNameViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/SecurityQuestions/Part/1", "Licence")">Change<span class="visually-hidden"> Previous trading name</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.NationalityViewModel.Nationality)</td>
+            <td>@Html.DisplayFor(m => m.NationalityViewModel.Nationality)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/SecurityQuestions/Part/2", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.NationalityViewModel.Nationality)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.PassportViewModel.HasPassport)</td>
+            <td>@Html.DisplayFor(m => m.PassportViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/SecurityQuestions/Part/3", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.PassportViewModel.HasPassport)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.RightToWorkViewModel.RightToWorkInUk)</td>
+            <td>@Html.DisplayFor(m => m.RightToWorkViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/SecurityQuestions/Part/4", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.RightToWorkViewModel.RightToWorkInUk)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.VisaViewModel.RequiresVisa)</td>
+            <td>@Html.DisplayFor(m => m.VisaViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/SecurityQuestions/Part/5", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.VisaViewModel.RequiresVisa)</span></a></td>
+        </tr>
+        <tr>
+            <td>Leave to Remain dates</td>
+            <td>@Html.DisplayFor(m => m.LeaveToRemainViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/SecurityQuestions/Part/6", "Licence")">Change<span class="visually-hidden"> Leave to Remain dates</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.UndischargedBankruptViewModel.IsUndischargedBankrupt)</td>
+            <td>@Html.DisplayFor(m => m.UndischargedBankruptViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/SecurityQuestions/Part/7", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.UndischargedBankruptViewModel.IsUndischargedBankrupt)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.DisqualifiedDirectorViewModel.IsDisqualifiedDirector)</td>
+            <td>@Html.DisplayFor(m => m.DisqualifiedDirectorViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/SecurityQuestions/Part/8", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.DisqualifiedDirectorViewModel.IsDisqualifiedDirector)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.RestraintOrderViewModel.IsSubjectToRestraintOrder)</td>
+            <td>@Html.DisplayFor(m => m.RestraintOrderViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/SecurityQuestions/Part/9", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.RestraintOrderViewModel.IsSubjectToRestraintOrder)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.UnspentConvictionsViewModel.HasUnspentConvictions)</td>
+            <td>@Html.DisplayFor(m => m.UnspentConvictionsViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/SecurityQuestions/Part/10", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.UnspentConvictionsViewModel.HasUnspentConvictions)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.AwaitingTrialViewModel.IsAwaitingTrial)</td>
+            <td>@Html.DisplayFor(m => m.AwaitingTrialViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/SecurityQuestions/Part/11", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.AwaitingTrialViewModel.IsAwaitingTrial)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.PreviousLicenceViewModel.HasPreviouslyHeldLicence)</td>
+            <td>@Html.DisplayFor(m => m.PreviousLicenceViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/SecurityQuestions/Part/12", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.PreviousLicenceViewModel.HasPreviouslyHeldLicence)</span></a></td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Director or Partner - Part 2";
+    var switchValue = "true";
+}
+
+@model GLAA.ViewModels.LicenceApplication.AlternativeFullNameViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                Are you known by any alternative names?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            <div class="form-group">
+                <fieldset>
+                    <legend id="legend_AlternativeName">
+                        <span class="body-text"></span>
+                    </legend>
+                    @foreach (var option in Model.YesNo)
+                    {
+                        <div class="multiple-choice">
+                            @Html.RadioButtonFor(x => x.HasAlternativeName, option.Value)
+                            @Html.Label(option.Text)
+                        </div>
+
+                        if (option.Value == switchValue)
+                        {
+                            <div class="panel panel-border-narrow js-hidden" id="alternative-name-detail">
+                                @Html.LabelWithHintFor(x => x.AlternativeName)
+                                @Html.TextBoxFor(x => x.AlternativeName, new { @class = "form-control" })
+                            </div>
+                        }
+                    }
+
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    
+    <button type="submit" class="button">Save and continue</button>
+}
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            hiddenContent.hideContent();
+            branchedQuestion.toggleBranch('.multiple-choice input', '#alternative-name-detail', @switchValue);
+        });
+    </script>
+}

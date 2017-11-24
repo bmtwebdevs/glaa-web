@@ -1,0 +1,879 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A503D020-F4DB-4757-9275-BA41B41BC454}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GLAA.Web</RootNamespace>
+    <AssemblyName>GLAA.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>6</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.Owin.4.0.1\lib\net45\Autofac.Integration.Mvc.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Owin.4.0.0\lib\net45\Autofac.Integration.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Collection, Version=3.1.2.0, Culture=neutral, PublicKeyToken=e57c3f0a3d6646db, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.Collection.3.1.2\lib\net45\AutoMapper.Collection.dll</HintPath>
+    </Reference>
+    <Reference Include="ExpressiveAnnotations, Version=2.7.3.0, Culture=neutral, PublicKeyToken=d3e372f3c1e83cec, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExpressiveAnnotations.2.9.5\lib\net45\ExpressiveAnnotations.dll</HintPath>
+    </Reference>
+    <Reference Include="ExpressiveAnnotations.MvcUnobtrusive, Version=2.5.4.0, Culture=neutral, PublicKeyToken=d3e372f3c1e83cec, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExpressiveAnnotations.2.9.5\lib\net45\ExpressiveAnnotations.MvcUnobtrusive.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\DeclarationController.cs" />
+    <Content Include="App_Code\HtmlHelpers.cs" />
+    <Compile Include="App_Start\AppDataProtectionProvider.cs" />
+    <Compile Include="App_Start\AutofacModules\AuthModule.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\EligibilityController.cs" />
+    <Compile Include="FormLogic\LicenceApplicationFormDefinition.cs" />
+    <Compile Include="App_Start\AutofacConfig.cs" />
+    <Compile Include="App_Start\AutofacModules\AdminModule.cs" />
+    <Compile Include="App_Start\AutofacModules\LicenceModule.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Attributes\ModelStateTransferAttribute.cs" />
+    <Compile Include="Attributes\SessionTimeoutAttribute.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FormSection.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\LicenceController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\WireframeLicenceController.cs" />
+    <Compile Include="FormLogic\FieldConfiguration.cs" />
+    <Compile Include="FormLogic\FormPageDefinition.cs" />
+    <Compile Include="FormLogic\IFieldConfiguration.cs" />
+    <Compile Include="FormLogic\IFormDefinition.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ISessionHelper.cs" />
+    <Compile Include="Helpers\SessionHelper.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\styles\accordion.css">
+      <DependentUpon>accordion.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\accordion.min.css">
+      <DependentUpon>accordion.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\admin\application-list.css">
+      <DependentUpon>application-list.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\admin\application-list.min.css">
+      <DependentUpon>application-list.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\admin\dashboard.css">
+      <DependentUpon>dashboard.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\admin\dashboard.min.css">
+      <DependentUpon>dashboard.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\admin\layout.css">
+      <DependentUpon>layout.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\admin\layout.min.css">
+      <DependentUpon>layout.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\glaa.css">
+      <DependentUpon>glaa.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\glaa.min.css">
+      <DependentUpon>glaa.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\govuk-elements\elements-documentation-ie6.css" />
+    <Content Include="Content\styles\govuk-elements\elements-documentation-ie6.min.css" />
+    <Content Include="Content\styles\govuk-elements\elements-documentation-ie7.css" />
+    <Content Include="Content\styles\govuk-elements\elements-documentation-ie7.min.css" />
+    <Content Include="Content\styles\govuk-elements\elements-documentation-ie8.css" />
+    <Content Include="Content\styles\govuk-elements\elements-documentation-ie8.min.css" />
+    <Content Include="Content\styles\govuk-elements\elements-documentation.css" />
+    <Content Include="Content\styles\govuk-elements\elements-documentation.min.css" />
+    <Content Include="Content\styles\govuk-elements\govuk-elements-styles-ie6.css" />
+    <Content Include="Content\styles\govuk-elements\govuk-elements-styles-ie6.min.css" />
+    <Content Include="Content\styles\govuk-elements\govuk-elements-styles-ie7.css" />
+    <Content Include="Content\styles\govuk-elements\govuk-elements-styles-ie7.min.css" />
+    <Content Include="Content\styles\govuk-elements\govuk-elements-styles-ie8.css" />
+    <Content Include="Content\styles\govuk-elements\govuk-elements-styles-ie8.min.css" />
+    <Content Include="Content\styles\govuk-elements\govuk-elements-styles.css" />
+    <Content Include="Content\styles\govuk-elements\govuk-elements-styles.min.css" />
+    <Content Include="Content\styles\govuk-elements\govuk-pattern-check-your-answers.css" />
+    <Content Include="Content\styles\govuk-elements\govuk-pattern-task-list.css" />
+    <Content Include="Content\styles\govuk-overrides.css">
+      <DependentUpon>govuk-overrides.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\govuk-overrides.min.css">
+      <DependentUpon>govuk-overrides.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\govuk-template.css" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\accordion-arrow-2x.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\accordion-arrow.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\arrow-sprite.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\close.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\gov.uk_logotype_crown-1x.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\gov.uk_logotype_crown.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\govuk-crest-2x.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\govuk-crest-ie.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\govuk-crest.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\icon-arrow-left.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\icon-calendar-2x.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\icon-calendar.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\icon-file-download-2x.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\icon-file-download.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\icon-important-2x.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\icon-important.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\icon-information-2x.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\icon-information.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\icon-locator-2x.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\icon-locator.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\icon-pointer-2x.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\icon-pointer-black-2x.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\icon-pointer-black.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\icon-pointer-indexed.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\icon-pointer.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\icon-search-2x.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\icon-search.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\open-government-licence.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\open-government-licence_2x.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\player-icon-forward.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\player-icon-pause.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\player-icon-play.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\player-icon-rewind.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\player-icon-volume.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\separator-2x.png" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\images\separator.png" />
+    <Content Include="CodeCoverage.runsettings" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <Content Include="Content\styles\licence\statuses.css">
+      <DependentUpon>statuses.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\licence\statuses.min.css">
+      <DependentUpon>statuses.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\sidebar-navigation.css">
+      <DependentUpon>sidebar-navigation.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\sidebar-navigation.min.css">
+      <DependentUpon>sidebar-navigation.css</DependentUpon>
+    </Content>
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\images\accordion-arrow-2x.png" />
+    <Content Include="Content\images\accordion-arrow.png" />
+    <Content Include="Content\images\apple-touch-icon-152x152.png" />
+    <Content Include="Content\images\apple-touch-icon-167x167.png" />
+    <Content Include="Content\images\apple-touch-icon-180x180.png" />
+    <Content Include="Content\images\apple-touch-icon.png" />
+    <Content Include="Content\images\arrow-sprite.png" />
+    <Content Include="Content\images\crests\bis_crest_13px.png" />
+    <Content Include="Content\images\crests\bis_crest_13px_x2.png" />
+    <Content Include="Content\images\crests\bis_crest_18px.png" />
+    <Content Include="Content\images\crests\bis_crest_18px_x2.png" />
+    <Content Include="Content\images\crests\bis_crest_27px.png" />
+    <Content Include="Content\images\crests\bis_crest_27px_x2.png" />
+    <Content Include="Content\images\crests\coastguard_13px.png" />
+    <Content Include="Content\images\crests\coastguard_13px_x2.png" />
+    <Content Include="Content\images\crests\coastguard_18px.png" />
+    <Content Include="Content\images\crests\coastguard_18px_x2.png" />
+    <Content Include="Content\images\crests\coastguard_27px.png" />
+    <Content Include="Content\images\crests\coastguard_27px_x2.png" />
+    <Content Include="Content\images\crests\dit_crest_13px.png" />
+    <Content Include="Content\images\crests\dit_crest_13px_x2.png" />
+    <Content Include="Content\images\crests\dit_crest_18px.png" />
+    <Content Include="Content\images\crests\dit_crest_18px_x2.png" />
+    <Content Include="Content\images\crests\dit_crest_27px.png" />
+    <Content Include="Content\images\crests\dit_crest_27px_x2.png" />
+    <Content Include="Content\images\crests\hmrc_crest_13px.png" />
+    <Content Include="Content\images\crests\hmrc_crest_13px_x2.png" />
+    <Content Include="Content\images\crests\hmrc_crest_18px.png" />
+    <Content Include="Content\images\crests\hmrc_crest_18px_x2.png" />
+    <Content Include="Content\images\crests\hmrc_crest_27px.png" />
+    <Content Include="Content\images\crests\hmrc_crest_27px_x2.png" />
+    <Content Include="Content\images\crests\ho_crest_13px.png" />
+    <Content Include="Content\images\crests\ho_crest_13px_x2.png" />
+    <Content Include="Content\images\crests\ho_crest_18px.png" />
+    <Content Include="Content\images\crests\ho_crest_18px_x2.png" />
+    <Content Include="Content\images\crests\ho_crest_27px.png" />
+    <Content Include="Content\images\crests\ho_crest_27px_x2.png" />
+    <Content Include="Content\images\crests\mod_crest_13px.png" />
+    <Content Include="Content\images\crests\mod_crest_13px_x2.png" />
+    <Content Include="Content\images\crests\mod_crest_18px.png" />
+    <Content Include="Content\images\crests\mod_crest_18px_x2.png" />
+    <Content Include="Content\images\crests\mod_crest_27px.png" />
+    <Content Include="Content\images\crests\mod_crest_27px_x2.png" />
+    <Content Include="Content\images\crests\org_crest_13px.png" />
+    <Content Include="Content\images\crests\org_crest_13px_x2.png" />
+    <Content Include="Content\images\crests\org_crest_18px.png" />
+    <Content Include="Content\images\crests\org_crest_18px_x2.png" />
+    <Content Include="Content\images\crests\org_crest_27px.png" />
+    <Content Include="Content\images\crests\org_crest_27px_x2.png" />
+    <Content Include="Content\images\crests\portcullis_13px.png" />
+    <Content Include="Content\images\crests\portcullis_13px_x2.png" />
+    <Content Include="Content\images\crests\portcullis_18px.png" />
+    <Content Include="Content\images\crests\portcullis_18px_x2.png" />
+    <Content Include="Content\images\crests\portcullis_27px.png" />
+    <Content Include="Content\images\crests\portcullis_27px_x2.png" />
+    <Content Include="Content\images\crests\so_crest_13px.png" />
+    <Content Include="Content\images\crests\so_crest_13px_x2.png" />
+    <Content Include="Content\images\crests\so_crest_18px.png" />
+    <Content Include="Content\images\crests\so_crest_18px_x2.png" />
+    <Content Include="Content\images\crests\so_crest_27px.png" />
+    <Content Include="Content\images\crests\so_crest_27px_x2.png" />
+    <Content Include="Content\images\crests\ukaea_crest_13px.png" />
+    <Content Include="Content\images\crests\ukaea_crest_13px_x2.png" />
+    <Content Include="Content\images\crests\ukaea_crest_18px.png" />
+    <Content Include="Content\images\crests\ukaea_crest_18px_x2.png" />
+    <Content Include="Content\images\crests\ukaea_crest_27px.png" />
+    <Content Include="Content\images\crests\ukaea_crest_27px_x2.png" />
+    <Content Include="Content\images\crests\ukho_13px.png" />
+    <Content Include="Content\images\crests\ukho_13px_x2.png" />
+    <Content Include="Content\images\crests\ukho_18px.png" />
+    <Content Include="Content\images\crests\ukho_18px_x2.png" />
+    <Content Include="Content\images\crests\ukho_27px.png" />
+    <Content Include="Content\images\crests\ukho_27px_x2.png" />
+    <Content Include="Content\images\crests\wales_crest_13px.png" />
+    <Content Include="Content\images\crests\wales_crest_13px_x2.png" />
+    <Content Include="Content\images\crests\wales_crest_18px.png" />
+    <Content Include="Content\images\crests\wales_crest_18px_x2.png" />
+    <Content Include="Content\images\crests\wales_crest_27px.png" />
+    <Content Include="Content\images\crests\wales_crest_27px_x2.png" />
+    <Content Include="Content\images\favicon.ico" />
+    <Content Include="Content\images\gov.uk_logotype_crown.svg" />
+    <Content Include="Content\images\gov.uk_logotype_crown_invert.png" />
+    <Content Include="Content\images\gov.uk_logotype_crown_invert_trans.png" />
+    <Content Include="Content\images\icon-arrow-left.png" />
+    <Content Include="Content\images\icon-calendar-2x.png" />
+    <Content Include="Content\images\icon-calendar.png" />
+    <Content Include="Content\images\icon-file-download-2x.png" />
+    <Content Include="Content\images\icon-file-download.png" />
+    <Content Include="Content\images\icon-important-2x.png" />
+    <Content Include="Content\images\icon-important.png" />
+    <Content Include="Content\images\icon-information-2x.png" />
+    <Content Include="Content\images\icon-information.png" />
+    <Content Include="Content\images\icon-locator-2x.png" />
+    <Content Include="Content\images\icon-locator.png" />
+    <Content Include="Content\images\icon-pointer-2x.png" />
+    <Content Include="Content\images\icon-pointer-black-2x.png" />
+    <Content Include="Content\images\icon-pointer-black.png" />
+    <Content Include="Content\images\icon-pointer-indexed.png" />
+    <Content Include="Content\images\icon-pointer.png" />
+    <Content Include="Content\images\icon-search-2x.png" />
+    <Content Include="Content\images\icon-search.png" />
+    <Content Include="Content\images\icon-steps\icon-step-1-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-1.png" />
+    <Content Include="Content\images\icon-steps\icon-step-10-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-10.png" />
+    <Content Include="Content\images\icon-steps\icon-step-11-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-11.png" />
+    <Content Include="Content\images\icon-steps\icon-step-12-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-12.png" />
+    <Content Include="Content\images\icon-steps\icon-step-13-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-13.png" />
+    <Content Include="Content\images\icon-steps\icon-step-14-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-14.png" />
+    <Content Include="Content\images\icon-steps\icon-step-2-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-2.png" />
+    <Content Include="Content\images\icon-steps\icon-step-3-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-3.png" />
+    <Content Include="Content\images\icon-steps\icon-step-4-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-4.png" />
+    <Content Include="Content\images\icon-steps\icon-step-5-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-5.png" />
+    <Content Include="Content\images\icon-steps\icon-step-6-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-6.png" />
+    <Content Include="Content\images\icon-steps\icon-step-7-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-7.png" />
+    <Content Include="Content\images\icon-steps\icon-step-8-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-8.png" />
+    <Content Include="Content\images\icon-steps\icon-step-9-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-9.png" />
+    <Content Include="Content\images\opengraph-image.png" />
+    <Content Include="Content\images\player-icon-forward.png" />
+    <Content Include="Content\images\player-icon-pause.png" />
+    <Content Include="Content\images\player-icon-play.png" />
+    <Content Include="Content\images\player-icon-rewind.png" />
+    <Content Include="Content\images\player-icon-volume.png" />
+    <Content Include="Content\images\separator-2x.png" />
+    <Content Include="Content\images\separator.png" />
+    <Content Include="Scripts\app\hiddenContent.js" />
+    <Content Include="Scripts\app\branchedQuestion.js" />
+    <Content Include="Scripts\app\gdsValidation.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\fonts\GDSTransportTabular-Bold.eot" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\fonts\GDSTransportTabular-Light.eot" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\fonts\GDSTransportWebsite-Bold.eot" />
+    <Content Include="Content\styles\govuk-template\assets\stylesheets\fonts\GDSTransportWebsite.eot" />
+    <Content Include="Content\styles\govuk-overrides.scss" />
+    <Content Include="Content\styles\admin\layout.scss" />
+    <Content Include="Content\styles\admin\dashboard.scss" />
+    <Content Include="Content\styles\licence\statuses.scss" />
+    <Content Include="Content\styles\admin\application-list.scss" />
+    <Content Include="Content\styles\glaa.scss" />
+    <Content Include="Content\styles\accordion.scss" />
+    <Content Include="Content\styles\sidebar-navigation.scss" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\expressive.annotations.validate.js" />
+    <Content Include="Scripts\expressive.annotations.validate.min.js" />
+    <Content Include="Scripts\govuk\modules.js" />
+    <Content Include="Scripts\govuk\show-hide-content.js" />
+    <Content Include="Scripts\govuk\stick-at-top-when-scrolling.js" />
+    <Content Include="Scripts\govuk\stop-scrolling-at-footer.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Licence\Apply.cshtml" />
+    <Content Include="Views\Licence\OrganisationDetails\OrganisationDetails.2.cshtml" />
+    <Content Include="Views\Licence\OrganisationDetails\OrganisationDetails.3.cshtml" />
+    <Content Include="Views\Licence\OrganisationDetails\OrganisationDetails.14.cshtml" />
+    <Content Include="Views\Licence\OrganisationDetails\OrganisationDetails.16.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.1.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.2.cshtml" />
+    <Content Include="Views\Shared\_GOV.UKLayout.cshtml" />
+    <Content Include="Views\Licence\OrganisationDetails\OrganisationDetails.14.cshtml" />
+    <Content Include="Views\Licence\OrganisationDetails\OrganisationDetails.8.cshtml" />
+    <Content Include="Views\Licence\OrganisationDetails\OrganisationDetails.3.cshtml" />
+    <Content Include="Views\Licence\OrganisationDetails\OrganisationDetails.15.cshtml" />
+    <Content Include="Views\Licence\OrganisationDetails\OrganisationDetails.9.cshtml" />
+    <Content Include="Views\Licence\OrganisationDetails\OrganisationDetails.4.cshtml" />
+    <Content Include="Views\Licence\OrganisationDetails\OrganisationDetails.5.cshtml" />
+    <Content Include="Views\Licence\OrganisationDetails\OrganisationDetails.7.cshtml" />
+    <Content Include="Views\Licence\OrganisationDetails\OrganisationDetails.8.cshtml" />
+    <Content Include="Views\Licence\DecisionWait.cshtml" />
+    <Content Include="Views\Licence\PayFee.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.2.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.4.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.5.cshtml" />
+    <Content Include="Views\Licence\SubmitApplication.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.6.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.7.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.8.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.9.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.10.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.11.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.12.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.13.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.14.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.15.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\LicenceStatusViewModel.cshtml" />
+    <Content Include="Views\Licence\Index.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.3.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.4.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.5.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.6.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.7.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.8.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.9.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.10.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.11.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.12.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.1.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.10.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.11.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.12.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.2.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.3.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.4.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.5.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.6.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.7.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.8.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.9.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.13.cshtml" />
+    <Content Include="Views\Licence\NamedIndividual\NamedIndividual.1.cshtml" />
+    <Content Include="Views\Licence\NamedIndividual\NamedIndividual.2.cshtml" />
+    <Content Include="Views\Licence\NamedIndividual\NamedIndividual.3.cshtml" />
+    <Content Include="Views\Licence\NamedIndividual\NamedIndividual.4.cshtml" />
+    <Content Include="Views\Licence\OrganisationDetails\OrganisationDetails.10.cshtml" />
+    <Content Include="Views\Licence\OrganisationDetails\OrganisationDetails.11.cshtml" />
+    <Content Include="Views\Licence\OrganisationDetails\OrganisationDetails.12.cshtml" />
+    <Content Include="Views\Licence\OrganisationDetails\OrganisationDetails.13.cshtml" />
+    <Content Include="Views\Licence\OrganisationDetails\OrganisationDetails.13.cshtml" />
+    <Content Include="Views\Licence\OrganisationDetails\OrganisationDetails.14.cshtml" />
+    <Content Include="Views\Licence\OrganisationDetails\OrganisationDetails.15.cshtml" />
+    <Content Include="Views\Licence\Organisation\Organisation.1.cshtml" />
+    <Content Include="Views\Licence\Organisation\Organisation.2.cshtml" />
+    <Content Include="Views\Licence\Organisation\Organisation.3.cshtml" />
+    <Content Include="Views\Licence\Organisation\Organisation.4.cshtml" />
+    <Content Include="Views\Licence\Organisation\Organisation.5.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\ApplicationList.cshtml" />
+    <Content Include="Views\Admin\ApplicationPerson.cshtml" />
+    <Content Include="Views\Shared\_GdsValidationSummary.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\_NullableDateTime.cshtml" />
+    <Content Include="Views\Licence\Resume.cshtml" />
+    <Content Include="Views\Licence\TaskList.cshtml" />
+    <Content Include="Views\Licence\OrganisationDetails\OrganisationDetails.6.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AddressViewModel.cshtml" />
+    <Content Include="Views\Licence\OrganisationDetails\OrganisationDetails.17.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\AddressViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ListCheckboxListItem.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\TurnoverViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CommunicationPreferenceViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\LegalStatusViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\PAYEERNStatusViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\VATStatusViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\OrganisationDetailsViewModel.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.30.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\PrincipalAuthorityViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\AlternativeFullNameViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\IsDirectorViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DirectorOrPartnerViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\IsPreviousPrincipalAuthorityViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\NamedIndividualViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\AlternativeBusinessRepresentativeViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SecurityQuestionsViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\TradedUnderAnotherNameViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\PassportViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\VisaViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\LeaveToRemainViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\UndischargedBankruptViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DisqualifiedDirectorViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\UnspentConvictionsViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\AwaitingTrialViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\PreviousLicenceViewModel.cshtml" />
+    <Content Include="Views\Licence\Organisation\Organisation.7.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\OrganisationViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\OutsideSectorsViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\WrittenAgreementViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MultipleBranchViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\PSCControlledViewModel.cshtml" />
+    <Content Include="Views\Shared\_GOV.UKAdminLayout.cshtml" />
+    <Content Include="Views\Admin\Application.cshtml" />
+    <Content Include="Views\Licence\Organisation\Organisation.6.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\TransportingWorkersViewModel.cshtml" />
+    <Content Include="Views\Licence\Organisation\Organisation.16.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\AccommodatingWorkersViewModel.cshtml" />
+    <Content Include="Views\Licence\Organisation\Organisation.8.cshtml" />
+    <Content Include="Views\Licence\Organisation\Organisation.9.cshtml" />
+    <Content Include="Views\Licence\Organisation\Organisation.10.cshtml" />
+    <Content Include="Views\Licence\Organisation\Organisation.11.cshtml" />
+    <Content Include="Views\Licence\Organisation\Organisation.12.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SourcingWorkersViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\WorkerSupplyMethodViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\WorkerContractViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\BannedFromTradingViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SubcontractorViewModel.cshtml" />
+    <Content Include="Views\Licence\Organisation\Organisation.13.cshtml" />
+    <Content Include="Views\Licence\Organisation\Organisation.14.cshtml" />
+    <Content Include="Views\Licence\Organisation\Organisation.15.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\PreviouslyWorkedInShellfishViewModel.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentatives\AlternativeBusinessRepresentatives.2.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentatives\AlternativeBusinessRepresentatives.3.cshtml" />
+    <Content Include="Views\Licence\DirectorsOrPartners\DirectorsOrPartners.2.cshtml" />
+    <Content Include="Views\Licence\DirectorsOrPartners\DirectorsOrPartners.3.cshtml" />
+    <Content Include="Views\Licence\NamedIndividuals\NamedIndividuals.2.cshtml" />
+    <Content Include="Views\Licence\NamedIndividuals\NamedIndividuals.3.cshtml" />
+    <Content Include="Views\Licence\JobTitle\JobTitle.1.cshtml" />
+    <Content Include="Views\Licence\JobTitle\JobTitle.2.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\NamedJobTitleViewModel.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.31.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.17.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.18.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\_NullableTimeSpan.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.19.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.20.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.16.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.28.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.29.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.21.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.22.cshtml" />
+    <Content Include="Views\Licence\SecurityQuestions\RestraintOrder.cshtml" />
+    <Content Include="Views\Licence\SecurityQuestions\UnspentConviction.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.23.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.24.cshtml" />
+    <Content Include="Views\Licence\SecurityQuestions\OffenceAwaitingTrial.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.25.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.26.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.27.cshtml" />
+    <Content Include="Views\Licence\SecurityQuestions\PreviousTradingName.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\RestraintOrdersViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\OffencesAwaitingTrialViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\NullableBoolean.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\PreviousTradingNamesViewModel.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.3.cshtml" />
+    <Content Include="Views\Eligibility\Introduction.cshtml" />
+    <Content Include="Views\Eligibility\Eligibility.1.cshtml" />
+    <Content Include="Views\Eligibility\Eligibility.2.cshtml" />
+    <Content Include="Views\Eligibility\Eligibility.3.cshtml" />
+    <Content Include="Views\Eligibility\Eligibility.4.cshtml" />
+    <Content Include="Views\Eligibility\WhatDoINeed.cshtml" />
+    <Content Include="Views\Eligibility\WhatIsCovered.cshtml" />
+    <Content Include="Views\Eligibility\OverseasBusiness.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.26.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.14.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.15.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.16.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.17.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.18.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.19.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.20.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.21.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.22.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.23.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.24.cshtml" />
+    <Content Include="Views\Licence\DirectorOrPartner\DirectorOrPartner.25.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.25.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.13.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.14.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.15.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.16.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.17.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.18.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.19.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.20.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.21.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.22.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.23.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentative\AlternativeBusinessRepresentative.24.cshtml" />
+    <Content Include="Views\Licence\NamedIndividual\NamedIndividual.15.cshtml" />
+    <Content Include="Views\Licence\NamedIndividual\NamedIndividual.5.cshtml" />
+    <Content Include="Views\Licence\NamedIndividual\NamedIndividual.6.cshtml" />
+    <Content Include="Views\Licence\NamedIndividual\NamedIndividual.7.cshtml" />
+    <Content Include="Views\Licence\NamedIndividual\NamedIndividual.8.cshtml" />
+    <Content Include="Views\Licence\NamedIndividual\NamedIndividual.9.cshtml" />
+    <Content Include="Views\Licence\NamedIndividual\NamedIndividual.10.cshtml" />
+    <Content Include="Views\Licence\NamedIndividual\NamedIndividual.11.cshtml" />
+    <Content Include="Views\Licence\NamedIndividual\NamedIndividual.12.cshtml" />
+    <Content Include="Views\Licence\NamedIndividual\NamedIndividual.13.cshtml" />
+    <Content Include="Views\Licence\NamedIndividual\NamedIndividual.14.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\PrincipalAuthorityRightToWorkViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\RightToWorkViewModel.cshtml" />
+    <Content Include="Views\Declaration\Index.cshtml" />
+    <Content Include="Views\Home\SessionTimeout.cshtml" />
+    <Content Include="Views\Licence\OrganisationDetails\OrganisationDetails.1.cshtml" />
+    <Content Include="Views\Licence\PrincipalAuthority\PrincipalAuthority.1.cshtml" />
+    <Content Include="Views\Licence\AlternativeBusinessRepresentatives\AlternativeBusinessRepresentatives.1.cshtml" />
+    <Content Include="Views\Licence\DirectorsOrPartners\DirectorsOrPartners.1.cshtml" />
+    <Content Include="Views\Licence\NamedIndividuals\NamedIndividuals.1.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\AlternativeBusinessRepresentativeCollectionViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DirectorOrPartnerCollectionViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\NamedIndividualCollectionViewModel.cshtml" />
+    <Content Include="Views\Eligibility\Eligibility.5.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\EligibilityViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\NullableInteger.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GLAA.Domain\GLAA.Domain.csproj">
+      <Project>{7f3dbd4c-0dd2-49f9-837e-9631872cedb2}</Project>
+      <Name>GLAA.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GLAA.Repository\GLAA.Repository.csproj">
+      <Project>{3d6628b8-efbd-4c37-9242-e08847518279}</Project>
+      <Name>GLAA.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GLAA.Services\GLAA.Services.csproj">
+      <Project>{5b691c5c-15aa-4f29-b24e-13726f00e2a3}</Project>
+      <Name>GLAA.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GLAA.ViewModels\GLAA.ViewModels.csproj">
+      <Project>{7b611716-ec88-48ab-bcbd-780ecc21b294}</Project>
+      <Name>GLAA.ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>29242</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/GLAA.Web</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\OctoPack.3.6.1\build\OctoPack.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OctoPack.3.6.1\build\OctoPack.targets'))" />
+  </Target>
+  <Import Project="..\packages\OctoPack.3.6.1\build\OctoPack.targets" Condition="Exists('..\packages\OctoPack.3.6.1\build\OctoPack.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

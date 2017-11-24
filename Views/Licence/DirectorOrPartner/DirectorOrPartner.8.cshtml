@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Director or Partner - Part 7";
+}
+
+@model GLAA.ViewModels.LicenceApplication.AddressViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                What is your address?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            @Html.EditorFor(x => x)
+        </div>
+    </div>
+    
+    <button type="submit" class="button">Save and continue</button>
+}

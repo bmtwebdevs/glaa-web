@@ -1,0 +1,24 @@
+﻿@using GLAA.Domain.Models
+@model GLAA.ViewModels.LicenceApplication.PrincipalAuthorityRightToWorkViewModel
+
+@{
+    if (Model.RightToWorkInUk.HasValue)
+    {
+        var opt = Model.AvailablePermissionToWork.Single(p => p.Id == (int)Model.RightToWorkInUk);
+
+        @opt.Name
+
+        if (Model.RightToWorkInUk.Value == PermissionToWorkEnum.HasVisa)
+        {
+            <br/>
+            <span>Visa Number @Model.VisaNumber</span>
+            <br/>
+            <span>@Model.ImmigrationStatus</span>
+            <br />
+            var date = Model.LeaveToRemainTo.Date?.ToString("dd/MM/yyy");
+            <span>Leave to remain expires @date</span>
+            <br/>
+            <span>Length of work in UK @Model.LengthOfUKWork.ToString()</span>
+        }
+    }
+}

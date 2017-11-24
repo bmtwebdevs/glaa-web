@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Principal Authority - Part 29";
+}
+
+@model GLAA.ViewModels.LicenceApplication.PreviousExperienceViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                Previous experience?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            <div class="form-group">
+                @Html.TextAreaFor(x => x.PreviousExperience, new {@class = "form-control"})
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="button">Save and continue</button>
+}
+
+

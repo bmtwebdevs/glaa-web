@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Alternative Business Representative - Part 5";
+}
+
+@model GLAA.ViewModels.LicenceApplication.CountryOfBirthViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                What country were you born in?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            @Html.TextFormGroupFor(x => x.CountryOfBirth)
+        </div>
+    </div>
+    
+    <button type="submit" class="button">Save and continue</button>
+}

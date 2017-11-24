@@ -1,0 +1,70 @@
+﻿@using GLAA.Web.Models
+@{
+    ViewBag.Title = "GLAA - Home Page";
+    var viewAll = Convert.ToBoolean(Request.QueryString["all"]);
+    var status = Request.QueryString["status"];
+
+
+    var headerText = $"{ (!viewAll ? "Latest" : "All") } Applications";
+
+    if (status != "")
+    {
+
+        headerText = $"{EnumHelpers.ParseOrRandomEnumValue<LicenceStatus>(status).GetInternalDescription()}";
+    }
+    var rnd = new Random();
+}
+<h2 class="heading-large admin-page-title">Applications</h2>
+<div class="grid-row">
+    <div class="column-one-quarter">
+        <div class="data">
+            <span class="data-item bold-xsmall">New</span>
+            <span class="data-item bold-xlarge">@rnd.Next(25)</span>
+        </div>
+    </div>
+    <div class="column-one-quarter">
+        <div class="data">
+            <span class="data-item bold-xsmall">Require Attention</span>
+            <span class="data-item bold-xlarge">@rnd.Next(20)</span>
+        </div>
+    </div>
+    <div class="column-one-quarter">
+        <div class="data">
+            <span class="data-item bold-xsmall">Outstanding Fees</span>
+            <span class="data-item bold-xlarge">@rnd.Next(5)</span>
+        </div>
+    </div>
+    <div class="column-one-quarter">
+        <div class="data">
+            <span class="data-item bold-xsmall">Nearly expired</span>
+            <span class="data-item bold-xlarge">@rnd.Next(7)</span>
+        </div>
+    </div>
+</div>
+<h2 class="heading-large">@headerText <small style="display: @(viewAll ? "none" : "inline-block");"><a href="?status=@(status)&all=true" class="link-view">View all</a></small><small style="display: @(viewAll ? "inline-block" : "none");"><a href="?status=@(status)&all=false" class="link-view">View latest</a></small></h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Application Ref</th>
+            <th>Company</th>
+            <th>Date of Application</th>
+            <th>Current Status</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (var i = 1; i < (viewAll ? 51 : 11); i++)
+        {
+            <tr>
+                <td>@($"TEST-{(1234 + i).ToString()}")</td>
+                <td>@($"Test Company {i.ToString()}")</td>
+                <td>@(DateTime.Now.AddDays(-(i)).ToString("dd/MM/yyyy"))</td>
+                <td class="application-status">
+                    <div class="swatch @(EnumHelpers.ParseOrRandomEnumValue<LicenceStatus>(status).GetInternalClassNames())"></div>
+                    <p>@(EnumHelpers.ParseOrRandomEnumValue<LicenceStatus>(status).GetInternalDescription())</p>
+                </td>
+                <td><a href="@Url.Action("Application", new { id = 1 })" class="link">view</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

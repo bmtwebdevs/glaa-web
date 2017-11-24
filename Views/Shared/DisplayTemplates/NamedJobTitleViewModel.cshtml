@@ -1,0 +1,21 @@
+﻿@model GLAA.ViewModels.LicenceApplication.NamedJobTitleViewModel
+
+<table class="check-your-answers">
+    <thead>
+        <tr>
+            <th colspan="3">Job Titles</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Html.LabelFor(m => m.JobTitle)</td>
+            <td>@Html.DisplayFor(m => m.JobTitle)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/JobTitle/Part/1", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.JobTitle)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.JobTitleNumber)</td>
+            <td>@Html.DisplayFor(m => m.JobTitleNumber)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/JobTitle/Part/1", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.JobTitleNumber)</span></a></td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,3 @@
+﻿@model List<GLAA.ViewModels.LicenceApplication.CheckboxListItem>
+
+@string.Join(", ", Model.Where(m => m.Checked).Select(n => n.Name))

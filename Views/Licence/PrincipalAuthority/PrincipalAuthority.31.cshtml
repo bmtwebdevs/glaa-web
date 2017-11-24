@@ -1,0 +1,23 @@
+﻿@model GLAA.ViewModels.LicenceApplication.PrincipalAuthorityViewModel
+
+@{
+    ViewBag.Title = "Principal Authority Summary";
+}
+
+<main id="content" role="main">
+    <div class="grid-row">
+        <div class="column-full">
+            <br />
+            <p>
+                @Html.ActionLink("Return to Task List", "TaskList")
+            </p>
+            <h1 class="heading-large">
+                Check your answers for this section
+            </h1>
+            @Html.DisplayFor(m => m)
+            <p>
+                @Html.ActionLink("Go to next section", "AlternativeBusinessRepresentatives", 1, new { @class = "button" })
+            </p>
+        </div>
+    </div>
+</main>

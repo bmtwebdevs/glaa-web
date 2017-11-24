@@ -1,0 +1,13 @@
+﻿@model GLAA.ViewModels.LicenceApplication.RestraintOrdersViewModel
+
+<table class="check-your-answers">
+    <tbody>
+    @foreach (var ro in Model.RestraintOrders)
+    {
+        <tr>
+            <td>@ro.Date</td>
+            <td>@ro.Description</td>
+        </tr>
+    }
+    </tbody>
+</table>

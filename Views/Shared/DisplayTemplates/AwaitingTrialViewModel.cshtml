@@ -1,0 +1,16 @@
+﻿@model GLAA.ViewModels.LicenceApplication.AwaitingTrialViewModel
+
+@{
+    var text = "No";
+    if (Model?.IsAwaitingTrial != null && Model.IsAwaitingTrial.Value)
+    {
+        text = $"Yes, {Model.OffenceDate}";
+    }
+}
+
+@text
+@if (Model?.IsAwaitingTrial != null && Model.IsAwaitingTrial.Value)
+{
+    <br/>
+    @Model.OffenceDescription
+}

@@ -1,0 +1,6 @@
+﻿@model GLAA.ViewModels.LicenceApplication.SourcingWorkersViewModel
+    
+@{
+    var text = Model.AvailableSources.FirstOrDefault(m => Model.WorkerSource.HasValue && m.Value == Model.WorkerSource.ToString())?.Text;
+}
+@text

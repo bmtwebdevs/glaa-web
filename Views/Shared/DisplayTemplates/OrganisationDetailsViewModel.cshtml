@@ -1,0 +1,86 @@
+﻿@model GLAA.ViewModels.LicenceApplication.OrganisationDetailsViewModel
+
+<table class="check-your-answers">
+    <thead>
+        <tr>
+            <th colspan="3">Company Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Html.LabelFor(m => m.OrganisationName.OrganisationName)</td>
+            <td class="@Model.OrganisationName?.OrganisationName">@Html.DisplayFor(m => m.OrganisationName.OrganisationName, new { @class = "org" })</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/OrganisationDetails/Part/2", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.OrganisationName.OrganisationName)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.TradingName.TradingName)</td>
+            <td>@Html.DisplayFor(m => m.TradingName.TradingName)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/OrganisationDetails/Part/3", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.TradingName.TradingName)</span></a></td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td>@Html.DisplayFor(m => m.Address)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/OrganisationDetails/Part/4", "Licence")">Change<span class="visually-hidden"> Address</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.BusinessPhoneNumber.BusinessPhoneNumber)</td>
+            <td>@Html.DisplayFor(m => m.BusinessPhoneNumber.BusinessPhoneNumber)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/OrganisationDetails/Part/5", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.BusinessPhoneNumber.BusinessPhoneNumber)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.BusinessMobileNumber.BusinessMobileNumber)</td>
+            <td>@Html.DisplayFor(m => m.BusinessMobileNumber.BusinessMobileNumber)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/OrganisationDetails/Part/6", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.BusinessMobileNumber.BusinessMobileNumber)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.BusinessEmailAddress.BusinessEmailAddress)</td>
+            <td>@Html.DisplayFor(m => m.BusinessEmailAddress.BusinessEmailAddress)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/OrganisationDetails/Part/7", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.BusinessEmailAddress.BusinessEmailAddress)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.BusinessWebsite.BusinessWebsite)</td>
+            <td>@Html.DisplayFor(m => m.BusinessWebsite.BusinessWebsite)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/OrganisationDetails/Part/8", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.BusinessWebsite.BusinessWebsite)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.CommunicationPreference.CommunicationPreference)</td>
+            <td>@Html.DisplayFor(m => m.CommunicationPreference.CommunicationPreference)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/OrganisationDetails/Part/9", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.CommunicationPreference.CommunicationPreference)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.LegalStatus.LegalStatus)</td>
+            <td>@Html.DisplayFor(m => m.LegalStatus)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/OrganisationDetails/Part/10", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.LegalStatus.LegalStatus)</span></a></td>
+        </tr>
+        <tr>
+            <td>PAYE/ERN Status</td>
+            <td>@Html.DisplayFor(m => m.PAYEERNStatus)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/OrganisationDetails/Part/11", "Licence")">Change<span class="visually-hidden"> PAYE/ERN Status</span></a></td>
+        </tr>
+        <tr>
+            <td>VAT Status</td>
+            <td>@Html.DisplayFor(m => m.VATStatus)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/OrganisationDetails/Part/12", "Licence")">Change<span class="visually-hidden"> VAT Status</span></a></td>
+        </tr>
+        <tr>
+            <td>Tax Reference Number</td>
+            <td>@Html.DisplayFor(m => m.TaxReference.TaxReferenceNumber)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/OrganisationDetails/Part/13", "Licence")">Change<span class="visually-hidden"> Tax Reference Number</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.OperatingIndustries.OperatingIndustries)</td>
+            <td>@Html.DisplayFor(m => m.OperatingIndustries.OperatingIndustries, "ListCheckboxListItem")</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/OrganisationDetails/Part/14", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.OperatingIndustries.OperatingIndustries)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Turnover.TurnoverBand)</td>
+            <td>@Html.DisplayFor(m => m.Turnover)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/OrganisationDetails/Part/15", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.Turnover.TurnoverBand)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.OperatingCountries.OperatingCountries)</td>
+            <td>@Html.DisplayFor(m => m.OperatingCountries.OperatingCountries, "ListCheckboxListItem")</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/OrganisationDetails/Part/16", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.OperatingCountries.OperatingCountries)</span></a></td>
+        </tr>
+    </tbody>
+</table>

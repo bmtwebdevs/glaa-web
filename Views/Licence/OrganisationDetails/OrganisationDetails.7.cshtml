@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Organisation Details - Part 10";
+}
+
+@model GLAA.ViewModels.LicenceApplication.BusinessEmailAddressViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>        
+        <div class="column-full">
+            <h1 class="heading-large">
+                What is your business email address?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            <div class="form-group">
+                @Html.LabelWithHintFor(x => x.BusinessEmailAddress)
+                @Html.TextBoxFor(x => x.BusinessEmailAddress, new {@class = "form-control", size = 100})
+            </div>
+            <div class="form-group">
+                @Html.LabelWithHintFor(x => x.BusinessEmailAddressConfirmation)
+                @Html.TextBoxFor(x => x.BusinessEmailAddressConfirmation, new {@class = "form-control"})
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="button">Save and continue</button>
+}

@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "GLAA - Home Page";
+}
+<h2 class="heading-large admin-page-title">Dashboard</h2>
+<ul class="hub-actions">
+    <li>
+        <a class="dashboard-panel" href="~/admin/applicationlist?status=">
+            <h2 class="count">42</h2>
+            <p>All Applications</p>
+        </a>
+    </li>
+    <li>
+        <a class="dashboard-panel" href="~/admin/applicationlist?status=NewApplication">
+            <h2 class="count">2</h2>
+            <p>Draft Applications in Progress</p>
+        </a>
+    </li>
+    <li>
+        <a class="dashboard-panel" href="~/admin/applicationlist?status=SubmittedOnline">
+            <h2 class="count">4</h2>
+            <p>Applications in Queue</p>
+        </a>
+    </li>
+    <li>
+        <a class="dashboard-panel" href="~/admin/applicationlist?status=Rejected">
+            <h2 class="count">6</h2>
+            <p>Rejected Applications</p>
+        </a>
+    </li>
+    <li>
+        <a class="dashboard-panel" href="~/admin/applicationlist?status=LicenceIssuedFull">
+            <h2 class="count">30</h2>
+            <p>Completed Applications</p>
+        </a>
+    </li>
+    <li>
+        <a class="dashboard-panel" href="~/admin/applicationlist?status=ApplicationSuspension">
+            <h2 class="count">10</h2>
+            <p>Under investigation</p>
+        </a>
+    </li>
+</ul>
+
+

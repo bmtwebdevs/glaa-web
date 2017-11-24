@@ -1,0 +1,64 @@
+﻿@using System.Web.Mvc.Html
+
+@{
+    ViewBag.Title = "What's covered by the GLAA";
+}
+
+@using (Html.BeginForm("Introduction", "Eligibility", FormMethod.Get))
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+            <h1 class="heading-xlarge">What's covered by the GLAA</h1>
+
+            <h2 class="heading-medium">Which activities need a licence?</h2>
+            
+            <p>
+                Our licensing scheme regulates businesses who provide workers to the fresh produce supply chain.
+                This also includes non-edible crops such as bulbs, flowers and other plants.
+            </p>
+            <p>
+                The scheme ensures that businesses who supply workers (labour providers, gangmasters or agencies) and
+                businesses who need workers (labour users, farmers, packhouses, factories) meet the employment standards
+                that are required by law.
+            </p>
+
+            <h2 class="heading-medium">Which sectors are covered by the scheme?</h2>
+
+            <p>
+                A range of sectors within the fresh produce supply chain are regulated by licensing:
+            </p>
+
+            <ul class="list list-bullet">
+                <li>Processing and packaging of all fresh food, drinks and other produce</li>
+                <li>Agriculture</li>
+                <li>Horticulture</li>
+                <li>Shellfish gathering</li>
+            </ul>
+
+            <p>
+                Anyone who supplies labour to these sectors will require a GLAA licence.
+            </p>
+            <p>
+                The scheme also covers anyone who uses labour to provide a service in the regulated sectors,
+                for example harvesting or gathering shellfish.
+            </p>
+            <p>
+                If you have any doubts about whether you need a licence please check the 'Guidance on who needs a licence' document.
+            </p>
+
+            <button class="button button-start" type="submit" role="button">Start now</button>
+        </div>
+        <div class="column-third">
+            <aside class="govuk-related-items add-heading-medium js-stick-at-top-when-scrolling">
+                <h2>Further Information</h2>
+                <nav>
+                    <ul>
+                        <li><a href="@Url.Action("OverseasBusiness")">My business is based overseas</a></li>
+                        <li><a href="@Url.Action("WhatDoINeed")">What do I need to complete an application?</a></li>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
+    </div>
+}

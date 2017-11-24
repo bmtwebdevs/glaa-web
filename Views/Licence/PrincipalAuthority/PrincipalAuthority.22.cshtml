@@ -1,0 +1,52 @@
+﻿@model GLAA.ViewModels.LicenceApplication.RestraintOrdersViewModel
+
+@{
+    ViewBag.Title = "Restraint or confiscation orders, or civil recoveries";
+    var conjunction = Model.RestraintOrders.Any() ? "another" : "a";
+}
+
+@using (Html.BeginForm("ReviewPrincipalAuthorityRestraintOrders", "Licence", FormMethod.Post))
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                @ViewBag.Title
+            </h1>
+        </div>
+    </div>
+    <table class="check-your-answers" id="RestraintOrders">
+        <thead>
+        <tr>
+            <th colspan="3">Restraint or confiscation orders, or civil recoveries</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var ro in Model.RestraintOrders)
+        {
+            <tr>
+                <td>@ro.Description</td>
+                <td>@ro.Date.ToString()</td>
+                <td class="change-answer"><a href="@Url.Action($"Apply/PrincipalAuthority/RestraintOrder/{ro.Id}")">Change or remove<span class="visually-hidden"> @ro.Description</span></a></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <div class="grid-row">
+        <div class="column-full">
+            <p>
+                <a class="button button-add-another" href="@Url.Action($"Apply/PrincipalAuthority/RestraintOrder/0", "Licence")">Add @conjunction restraint order</a>
+            </p>
+        </div>
+    </div>
+    <div class="grid-row">
+        <div class="column-full">
+            <p>
+                <button type="submit" class="button">Save and continue</button>
+            </p>
+        </div>
+    </div>
+    @Html.HiddenFor(m => m.HasRestraintOrders)
+}

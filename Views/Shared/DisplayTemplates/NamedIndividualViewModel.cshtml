@@ -1,0 +1,90 @@
+﻿@model GLAA.ViewModels.LicenceApplication.NamedIndividualViewModel
+
+<table class="check-your-answers">
+    <thead>
+        <tr>
+            <th colspan="3">Named Individual</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Html.LabelFor(m => m.FullName.FullName)</td>
+            <td>@Html.DisplayFor(m => m.FullName.FullName)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/NamedIndividual/Part/1", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.FullName.FullName)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.DateOfBirth.DateOfBirth)</td>
+            <td>@Html.DisplayFor(m => m.DateOfBirth.DateOfBirth)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/NamedIndividual/Part/2", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.DateOfBirth.DateOfBirth)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.BusinessPhoneNumber.BusinessPhoneNumber)</td>
+            <td>@Html.DisplayFor(m => m.BusinessPhoneNumber.BusinessPhoneNumber)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/NamedIndividual/Part/3", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.BusinessPhoneNumber.BusinessPhoneNumber)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.BusinessExtension.BusinessExtension)</td>
+            <td>@Html.DisplayFor(m => m.BusinessExtension.BusinessExtension)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/NamedIndividual/Part/4", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.BusinessExtension.BusinessExtension)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.RightToWorkViewModel.RequiresVisa)</td>
+            <td>@Html.DisplayFor(m => m.RightToWorkViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/NamedIndividual/Part/5", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.RightToWorkViewModel.RequiresVisa)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.UndischargedBankruptViewModel.IsUndischargedBankrupt)</td>
+            <td>@Html.DisplayFor(m => m.UndischargedBankruptViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/NamedIndividual/Part/6", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.UndischargedBankruptViewModel.IsUndischargedBankrupt)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.DisqualifiedDirectorViewModel.IsDisqualifiedDirector)</td>
+            <td>@Html.DisplayFor(m => m.DisqualifiedDirectorViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/NamedIndividual/Part/7", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.DisqualifiedDirectorViewModel.IsDisqualifiedDirector)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.RestraintOrdersViewModel.HasRestraintOrders)</td>
+            <td>@Html.DisplayFor(m => m.RestraintOrdersViewModel.HasRestraintOrders, "NullableBoolean")</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/NamedIndividual/Part/8", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.DisqualifiedDirectorViewModel.IsDisqualifiedDirector)</span></a></td>
+        </tr>
+        @if (Model.RestraintOrdersViewModel.CanView(Model))
+        {
+            <tr>
+                <td>@Html.LabelFor(m => m.RestraintOrdersViewModel.RestraintOrders)</td>
+                <td>@Html.DisplayFor(m => m.RestraintOrdersViewModel)</td>
+                <td class="change-answer"><a href="@Url.Action("Apply/NamedIndividual/Part/9", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.DisqualifiedDirectorViewModel.IsDisqualifiedDirector)</span></a></td>
+            </tr>
+        }
+        <tr>
+            <td>@Html.LabelFor(m => m.UnspentConvictionsViewModel.HasUnspentConvictions)</td>
+            <td>@Html.DisplayFor(m => m.UnspentConvictionsViewModel.HasUnspentConvictions, "NullableBoolean")</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/NamedIndividual/Part/10", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.DisqualifiedDirectorViewModel.IsDisqualifiedDirector)</span></a></td>
+        </tr>
+        @if (Model.UnspentConvictionsViewModel.CanView(Model))
+        {
+            <tr>
+                <td>@Html.LabelFor(m => m.UnspentConvictionsViewModel.UnspentConvictions)</td>
+                <td>@Html.DisplayFor(m => m.UnspentConvictionsViewModel)</td>
+                <td class="change-answer"><a href="@Url.Action("Apply/NamedIndividual/Part/11", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.DisqualifiedDirectorViewModel.IsDisqualifiedDirector)</span></a></td>
+            </tr>
+        }
+        <tr>
+            <td>@Html.LabelFor(m => m.OffencesAwaitingTrialViewModel.HasOffencesAwaitingTrial)</td>
+            <td>@Html.DisplayFor(m => m.OffencesAwaitingTrialViewModel.HasOffencesAwaitingTrial, "NullableBoolean")</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/NamedIndividual/Part/12", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.DisqualifiedDirectorViewModel.IsDisqualifiedDirector)</span></a></td>
+        </tr>
+        @if (Model.OffencesAwaitingTrialViewModel.CanView(Model))
+        {
+            <tr>
+                <td>@Html.LabelFor(m => m.OffencesAwaitingTrialViewModel.OffencesAwaitingTrial)</td>
+                <td>@Html.DisplayFor(m => m.OffencesAwaitingTrialViewModel)</td>
+                <td class="change-answer"><a href="@Url.Action("Apply/NamedIndividual/Part/13", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.DisqualifiedDirectorViewModel.IsDisqualifiedDirector)</span></a></td>
+            </tr>
+        }
+        <tr>
+            <td>@Html.LabelFor(m => m.PreviousLicenceViewModel.HasPreviouslyHeldLicence)</td>
+            <td>@Html.DisplayFor(m => m.PreviousLicenceViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/NamedIndividual/Part/14", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.DisqualifiedDirectorViewModel.IsDisqualifiedDirector)</span></a></td>
+        </tr>
+    </tbody>
+</table>

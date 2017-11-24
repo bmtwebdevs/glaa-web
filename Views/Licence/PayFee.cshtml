@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Application not yet submitted";
+}
+
+<h1 class="heading-large">@ViewBag.Title</h1>
+<p class="lede">
+    Come back to this page once your application has gone through the process if you need to pay a fee.
+</p>
+@using (Html.BeginForm("TaskList", "Licence", FormMethod.Post))
+{
+    <button type="submit" class="button">Back to Task List</button>
+}

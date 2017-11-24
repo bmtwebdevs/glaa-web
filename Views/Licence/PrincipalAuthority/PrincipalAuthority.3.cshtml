@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Principal Authority - Part 2";
+}
+
+@model GLAA.ViewModels.LicenceApplication.PrincipalAuthorityConfirmationViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-large">
+                We note that you are not a Director of the company
+            </h1>
+            <p class="lede">
+                Principal Authority is a term that we use to describe the person responsible for the day-to-day management of the business. In the case of a company the Principal Authority will normally be the managing director. If there is a person in the company that meets this definition, that person should be named as the PA on the application rather than yourself. If you are responsible for the day-to-day management of the business, then we will require a letter or e-mail from a Director of your company providing confirmation that you meet the definition of a Principal Authority that has been outlined above. Please confirm that you will now be providing written confirmation from a Director of your company that confirms that you meet the definition of a PA. We will be unable to process your application until this confirmation is received.
+            </p>
+        </div>
+        <div class="column-two-thirds">
+            <div class="form-group">
+                <fieldset>
+                    <legend>
+                        <span class="body-text">@Html.LabelFor(x => x.WillProvideConfirmation)</span>
+                    </legend>
+                    <div class="multiple-choice">
+                        @Html.CheckBoxFor(x => x.WillProvideConfirmation)
+                        @Html.Label("Yes")
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    
+    <button type="submit" class="button">Save and continue</button>
+}
+

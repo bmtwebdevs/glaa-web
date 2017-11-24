@@ -1,0 +1,16 @@
+﻿@model GLAA.ViewModels.LicenceApplication.DateViewModel
+
+<div class="form-date">
+    <div class="form-group form-group-day">
+        @Html.LabelFor(x => x.Day)
+        @Html.TextBoxFor(x => x.Day, new { @class = "form-control date-part" })
+    </div>
+    <div class="form-group form-group-month">
+        @Html.LabelFor(x => x.Month)
+        @Html.TextBoxFor(x => x.Month, new { @class = "form-control date-part" })
+    </div>
+    <div class="form-group form-group-year">
+        @Html.LabelFor(x => x.Year)
+        @Html.TextBoxFor(x => x.Year, new { @class = "form-control date-part" })
+    </div>
+</div>

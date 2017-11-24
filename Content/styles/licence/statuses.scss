@@ -1,0 +1,48 @@
+﻿.external-status {
+	width: 97%;
+	padding: 1.5%;
+	margin-bottom: 20px;
+}
+
+.NotStarted, .CeasedTrading, .Expired, .LicenceCancelled,
+.Rejected, .ApplicationCancelled {
+	background-color: #BFC1C3; // $grey-2
+	color: white;
+}
+
+.NewApplication, .SubmittedOnline, .SubmittedByTelephone {
+	background-color: #2B8CC4; // $light-blue
+	color: black;
+}
+
+.AwaitingPaymentAndDocuments, .AwaitingDocuments, .AwaitingPayment,
+.ApplicationException, .InspectionScheduled, .ApplicationSuspension,
+.PreAppeal, .AppealAgainstRefusal, .AppealAgainstRevocation,
+.AppealAgainstALC, .RevokedWithoutImmediateEffect {
+	background-color: #F47738; // $orange
+	color: black;
+}
+
+.ReviewRequired, .OGDCheckCommence, .OGDCheckComplete, .InspectionRequired,
+.DecisionPending, .InspectionComplete, .PostOGDException {
+	background-color: #FFBF47; // $yellow
+	color: black;
+}
+
+.LicenceIssuedFull, .LicenceIssuedALC, .LicenceIssuedSectorChange {
+	background-color: #006435; // $green
+	color: white;
+}
+
+.AppealAgainstNoticeOfRevocation {
+	background-color: #28A197; // $turquoise
+	color: white;
+}
+
+.MindedToRefuse, .Refused, .PreAppealInspectionRequired,
+.PreAppealInspectionComplete, .PreAppealDecisionPending,
+.LicenceSuspension, .RevokedWithImmediateEffect, .RevokedAppealRejected,
+.RevokedAppealWithdrawn, .RevokedTimedOut {
+	background-color: #B10E1E; // $red
+	color: white;
+}

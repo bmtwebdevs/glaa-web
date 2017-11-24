@@ -1,0 +1,26 @@
+﻿@model GLAA.ViewModels.LicenceApplication.VisaViewModel
+
+@{
+    string line1;
+    var line2 = string.Empty;
+    var line3 = string.Empty;
+    if (Model?.RequiresVisa != null && Model.RequiresVisa.Value)
+    {
+        line1 = $"Yes, no. {Model.VisaNumber}";
+        line2 = $"Type: {Model.TypeOfVisa}";
+        line3 = $"Status: {Model.ImmigrationStatus}";
+    }
+    else
+    {
+        line1 = "No";
+    }
+}
+
+@line1
+@if (Model?.RequiresVisa != null && Model.RequiresVisa.Value)
+{
+    <br/>
+    @line2
+    <br/>
+    @line3
+}

@@ -1,0 +1,154 @@
+﻿@{
+    ViewBag.Title = "Summary of whether you need a licence";
+}
+
+@model GLAA.ViewModels.LicenceApplication.EligibilitySummaryViewModel
+
+<div class="grid-row">
+    <div class="column-two-thirds">
+
+        @Html.Partial("_GdsValidationSummary")
+
+        <h1 class="heading-large">
+            At a glance
+        </h1>
+        <p>
+            Summary of whether you need a licence
+        </p>
+        <br />
+
+        <div class="notice">
+            <i class="icon icon-information">
+                <span class="visually-hidden">Information</span>
+            </i>
+            <strong class="bold-small">
+                @Model.SuppliesWorkersText
+            </strong>
+        </div>
+        <br />
+
+        <div class="notice">
+            <i class="icon icon-information">
+                <span class="visually-hidden">Information</span>
+            </i>
+            <strong class="bold-small">
+                @Model.IndustriesText
+            </strong>
+        </div>
+        <br />
+
+        <div class="notice">
+            <i class="icon icon-information">
+                <span class="visually-hidden">Information</span>
+            </i>
+            <strong class="bold-small">
+                Your licence will cost &pound;@Model.ApplicationFee based on your turnover.
+            </strong>
+        </div>
+        <br />
+        <div class="notice">
+            <i class="icon icon-information">
+                <span class="visually-hidden">Information</span>
+            </i>
+            <strong class="bold-small">
+                There may also be an inspection fee of &pound;@Model.InspectionFee during your application process.
+            </strong>
+        </div>
+        <br />
+        <div class="notice">
+            <i class="icon icon-information">
+                <span class="visually-hidden">Information</span>
+            </i>
+            <strong class="bold-small">
+                The application will take three to six working weeks to be processed once fully completed.
+            </strong>
+        </div>
+        <br />
+
+        <br />
+        <p>
+            If you are unsure whether you need a licence, refer to the <a href="http://www.gla.gov.uk/media/3180/licensing-standards-may-2012-reprinted-june-2017.pdf">full guidelines to licensing.</a>
+        </p>
+
+
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="multiple-choice">
+                @Html.RadioButtonFor(x => x.ContinueApplication, "true", new { name = "Continue", @id = "Continue_True" })
+                @Html.LabelFor(x => x.ContinueApplication, "Continue my application")
+            </div>
+
+            <div class="panel panel-border-narrow js-hidden" id="continue-application">
+                
+                @if (Model.EmailAlreadyRegistered)
+                {
+                    <p>The email address entered is already registered, you can login to retrieve you process using the link below.</p>
+                    <p>
+                        @Html.ActionLink("Resume application", "Resume", "Licence")
+                    </p>
+                    <br/>
+                    <br />
+                }
+                else
+                {
+                    <p>To continue you must create an account so that you can retrieve you application at a later date.</p>
+                    <p class="bold-small">Please read the privacy policy</p>
+                }
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Email, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Email, string.Empty, new { @class = "error-message" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Password, new { @class = "form-label" })
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Password, string.Empty, new { @class = "error-message" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.ConfirmPassword, new { @class = "form-label" })
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.ConfirmPassword, string.Empty, new { @class = "error-message" })
+                </div>
+                <button type="submit" class="button button-start">Continue</button>
+
+            </div>
+
+
+            <div class="multiple-choice">
+                @Html.RadioButtonFor(x => x.ContinueApplication, "false", new { name = "Continue", @id = "Continue_False" })
+                @Html.LabelFor(x => x.ContinueApplication, "Exit my application")
+            </div>
+        }
+
+        <div class="panel panel-border-narrow js-hidden" id="exit-application">
+            <p>Thank you for considering a licence, clicking below will exit and return you to the homepage.</p>
+            <a href="http://www.gla.gov.uk/" class="button button-start">Finish</a>
+        </div>
+
+    </div>
+    <div class="column-third">
+        <aside class="govuk-related-items add-heading-medium js-stick-at-top-when-scrolling">
+            <h2>Further Information</h2>
+            <nav>
+                <ul>
+                    <li><a href="http://www.gla.gov.uk/media/3180/licensing-standards-may-2012-reprinted-june-2017.pdf">GLAA Licencing Guidelines</a></li>
+                    <li><a href="@Url.Action("Resume", "Licence")">Resume Application</a></li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+</div>
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            hiddenContent.hideContent();
+            branchedQuestion.radioToggleBranch('#Continue_True', '#continue-application', '#exit-application');
+            branchedQuestion.radioToggleBranch('#Continue_False', '#exit-application', '#continue-application');
+        });
+    </script>
+}

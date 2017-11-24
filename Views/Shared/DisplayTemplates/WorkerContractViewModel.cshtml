@@ -1,0 +1,6 @@
+﻿@model GLAA.ViewModels.LicenceApplication.WorkerContractViewModel
+
+@{
+    var text = Model.AvailableContracts.FirstOrDefault(m => Model.SelectedContract.HasValue && m.Value == ((int) Model.SelectedContract).ToString())?.Text;
+}
+@text

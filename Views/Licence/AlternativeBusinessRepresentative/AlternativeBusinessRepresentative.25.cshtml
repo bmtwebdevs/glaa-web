@@ -1,0 +1,27 @@
+﻿@model GLAA.ViewModels.LicenceApplication.AlternativeBusinessRepresentativeViewModel
+
+@{
+    ViewBag.Title = "Alternative Business Representative Summary";
+}
+
+@using (Html.BeginForm())
+{
+    <main id="content" role="main">
+        <div class="grid-row">
+            <div class="column-full">
+                <h1 class="heading-large">
+                    Check your answers for this person
+                </h1>
+                <p><button type="submit" class="button button-add-another">Remove this person</button></p>
+                @Html.DisplayFor(m => m)
+                <h2 class="heading-medium">Complete this section</h2>
+                <p class="text">
+                    Once you are happy with your answers for this alternative business representative, review your answers for the section.
+                </p>
+                <div class="form-group">
+                    <a href="@Url.Action($"Apply/AlternativeBusinessRepresentatives/Part/3")">Return to alternative business representatives list</a>
+                </div>
+            </div>
+        </div>
+    </main>
+}

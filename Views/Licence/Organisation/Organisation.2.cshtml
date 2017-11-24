@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Organisation - Part 1";
+    var switchValue = "true";
+}
+
+@model GLAA.ViewModels.LicenceApplication.OutsideSectorsViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                Do you supply workers to industries outside the licensable sectors?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            <div class="form-group">
+                <fieldset>
+                    <legend>
+                        <span class="body-text"></span>
+                    </legend>
+                    @foreach (var option in Model.YesNo)
+                    {
+                        <div class="multiple-choice">
+                            @Html.RadioButtonFor(x => x.SuppliesWorkersOutsideLicensableAreas, option.Value, new { id = $"SuppliesWorkersOutsideLicensableAreas_{option.Text}" })
+                            @Html.LabelFor(x => x.SuppliesWorkersOutsideLicensableAreas, option.Text, new { @for = $"SuppliesWorkersOutsideLicensableAreas_{option.Text}" })
+                        </div>
+
+                        if (option.Value == switchValue)
+                        {
+                            <div class="panel panel-border-narrow js-hidden" id="unlicensed-sectors">
+                                <div class="form-group">
+                                    <fieldset>
+                                        <div class="column-full">
+                                            <h1 class="heading-large">
+                                                What sectors do you operate in?
+                                            </h1>
+                                        </div>
+                                        <div class="column-two-thirds">
+                                            @Html.CheckBoxFormGroupFor(x => x.SelectedSectors, Model.SelectedSectors)
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                @Html.TextFormGroupFor(x => x.OtherSector)
+                            </div>
+                        }
+                    }
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    
+    <button type="submit" class="button">Save and continue</button>
+}
+
+@section scripts
+{    
+    <script>
+        $(document).ready(function () {
+            hiddenContent.hideContent();
+            branchedQuestion.toggleBranch('.multiple-choice input[type="radio"]', '#unlicensed-sectors', @switchValue);
+        });
+    </script>
+}

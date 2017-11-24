@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "ApplicationPerson";
+    var name = Request.QueryString["name"];
+    var personType = Request.QueryString["personType"];
+    var id = Request.QueryString["id"];
+}
+
+<main id="content" role="main">
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-large">Application BMTD-1234</h1>
+            <a href="~/Admin/Application/@(id)">Back to application</a>
+            <h2 class="heading-medium">@(personType + " - " + name)</h2>
+        </div>
+    </div>
+    <div class="grid-row">
+        <div class="column-full">
+            <h2 class="heading-medium">Personal Details</h2>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Alternate Name</h1>
+            <p>Mr Alan Smithee</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">National Insurance Number</h1>
+            <p>QQ 12 34 56 C</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">&nbsp;</h1>
+            <p>&nbsp;</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Date of Birth</h1>
+            <p>01/01/1970</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Town of Birth</h1>
+            <p>Nottingham</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Country of Birth</h1>
+            <p>UK</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Address</h1>
+            <p>123 Fake Street, Bath, B&amp;NES, BA1 1ZZ</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Phone number(s)</h1>
+            <p>01632 960335 ext. 555<br />07700 900692</p>
+        </div>
+        <div class="column-one-third">
+            <h1 class="heading-small">Email</h1>
+            <p><a href="mailto:example@example.com">example@example.com</a><br />&nbsp;</p>
+        </div>
+    </div>
+    <div class="grid-row">
+        <div class="column-full">
+            <h2 class="heading-medium">Security Questions</h2>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Requires UK Work Visa/Permit?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Details</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Is an Undischarged Bankrupt?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Details</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Is Disqualified as a Company Director?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Details</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Is the subject of a Restraint or Confiscation order, or Civil Recovery?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Details</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Has any unspent criminal convictions, or alternative sanctions or penalties for proven offences?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Details</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Has been interviewed for or charged with an offence that is awaiting trial or a decision on an alternative sanction or penalty?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Details</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Has previously held or currently hold a GLA/GLAA licence, been named on another GLA/GLAA licence, worked for another GLA/GLAA licence holder or advised another GLA/GLAA licence holder within the last 10 years?</h1>
+            <p>Yes</p>
+        </div>
+        <div class="column-one-half">
+            <h1 class="heading-small">Details</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+    </div>
+</main>

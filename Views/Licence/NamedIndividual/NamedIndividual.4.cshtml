@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Named Individual - Part 4";
+}
+
+@model GLAA.ViewModels.LicenceApplication.BusinessExtensionViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                What is your business extension number?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            @Html.TextFormGroupFor(x => x.BusinessExtension)
+        </div>
+    </div>
+    
+    <button type="submit" class="button">Save and continue</button>
+}
+

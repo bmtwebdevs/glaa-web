@@ -1,0 +1,19 @@
+﻿@model GLAA.ViewModels.LicenceApplication.MultipleBranchViewModel
+
+@if (Model?.HasMultiples != null && Model.HasMultiples.Value)
+{
+    @Html.DisplayFor(m => m.SelectedMultiples, "ListCheckboxListItem")
+    if (!string.IsNullOrEmpty(Model.OtherMultiple))
+    {
+        var sep = Model.SelectedMultiples.Any() ? ", " : string.Empty;
+        var other = $"{sep}{Model.OtherMultiple}";
+        @other
+    }
+}
+else
+{
+    // Razor syntax is weird
+    const string text = "No";
+    @text
+}
+

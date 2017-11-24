@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Principal Authority - Part 1";
+}
+
+@model GLAA.ViewModels.LicenceApplication.IsDirectorViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-large">
+                Are you a director of the company?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            <div class="form-group">
+                <fieldset>
+                    <legend>
+                        <span class="body-text"></span>
+                    </legend>
+                    
+                    @*@Html.RadioButtonFormGroupFor(x => x.IsDirector, Model.YesNo)*@
+
+                    @foreach (var option in Model.YesNo)
+                    {
+                        <div class="multiple-choice">
+                            @Html.RadioButtonFor(x => x.IsDirector, option.Value, new { id = $"IsDirector_{option.Text}" })
+                            @Html.LabelFor(x => x.IsDirector, option.Text, new { @for = $"IsDirector_{option.Text}"})
+                        </div>
+                    }
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    
+    <button type="submit" class="button">Save and continue</button>
+}
+

@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Named Individual - Part 2";
+}
+
+@using GLAA.Web.Helpers
+@model GLAA.ViewModels.LicenceApplication.NamedJobTitleViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                Check your answers for this section
+            </h1>
+            @Html.DisplayFor(m => m)
+            <button type="submit" class="button button-add-another">Remove this job title</button>
+            <h2 class="heading-medium">Complete this section</h2>
+            <p class="text">
+                Once you are happy with your answers for this job title, review your answers for the section.
+            </p>
+            <div class="form-group">
+                <a class="button" href="@Url.Action($"Apply/NamedIndividuals/Part/2")">Save and review</a>
+            </div>
+            <br/>
+            <br/>
+            @if (!SessionHelper.GetBool(Session, SessionHelper.CurrentUserIsAdmin))
+            {
+                <p>
+                    @Html.ActionLink("Return to Task List", "TaskList")
+                </p>
+            }
+            else
+            {
+                <p>
+                    @Html.ActionLink("Return to overview", "Licence", "Admin")
+                </p>
+            }
+        </div>
+    </div>   
+}
+

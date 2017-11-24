@@ -1,0 +1,121 @@
+﻿@model GLAA.ViewModels.LicenceApplication.OrganisationViewModel
+
+<table class="check-your-answers">
+    <thead>
+        <tr>
+            <th colspan="3">Organisation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Html.LabelFor(m => m.OutsideSectorsViewModel.SuppliesWorkersOutsideLicensableAreas)</td>
+            <td>@Html.DisplayFor(m => m.OutsideSectorsViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/Organisation/Part/2", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.OutsideSectorsViewModel.SuppliesWorkersOutsideLicensableAreas)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.WrittenAgreementViewModel.HasWrittenAgreementsInPlace)</td>
+            <td>@Html.DisplayFor(m => m.WrittenAgreementViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/Organisation/Part/3", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.WrittenAgreementViewModel.HasWrittenAgreementsInPlace)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.MultipleBranchViewModel.HasMultiples)</td>
+            <td>@Html.DisplayFor(m => m.MultipleBranchViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/Organisation/Part/4", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.MultipleBranchViewModel.HasMultiples)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.PscControlledViewModel.IsPSCControlled)</td>
+            <td>@Html.DisplayFor(m => m.PscControlledViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/Organisation/Part/5", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.PscControlledViewModel.IsPSCControlled)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.TransportingWorkersViewModel.TransportsWorkersToWorkplace)</td>
+            <td>@Html.DisplayFor(m => m.TransportingWorkersViewModel.TransportsWorkersToWorkplace, "NullableBoolean")</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/Organisation/Part/6", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.TransportingWorkersViewModel.TransportsWorkersToWorkplace)</span></a></td>
+        </tr>
+        @if (Model.TransportingWorkersViewModel.TransportsWorkersToWorkplace ?? false)
+        {
+            <tr>
+                <td>@Html.LabelFor(m => m.TransportingWorkersViewModel.NumberOfVehicles)</td>
+                <td>@Html.DisplayFor(m => m.TransportingWorkersViewModel.NumberOfVehicles, "NullableInteger")</td>
+                <td class="change-answer"><a href="@Url.Action("Apply/Organisation/Part/6", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.TransportingWorkersViewModel.TransportsWorkersToWorkplace)</span></a></td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.TransportingWorkersViewModel.TransportDeductedFromPay)</td>
+                <td>@Html.DisplayFor(m => m.TransportingWorkersViewModel.TransportDeductedFromPay, "NullableBoolean")</td>
+                <td class="change-answer"><a href="@Url.Action("Apply/Organisation/Part/6", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.TransportingWorkersViewModel.TransportsWorkersToWorkplace)</span></a></td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.TransportingWorkersViewModel.TransportWorkersChoose)</td>
+                <td>@Html.DisplayFor(m => m.TransportingWorkersViewModel.TransportWorkersChoose, "NullableBoolean")</td>
+                <td class="change-answer"><a href="@Url.Action("Apply/Organisation/Part/6", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.TransportingWorkersViewModel.TransportsWorkersToWorkplace)</span></a></td>
+            </tr>
+        }
+        <tr>
+            <td>@Html.LabelFor(m => m.AccommodatingWorkersViewModel.AccommodatesWorkers)</td>
+            <td>@Html.DisplayFor(m => m.AccommodatingWorkersViewModel.AccommodatesWorkers, "NullableBoolean")</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/Organisation/Part/7", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.AccommodatingWorkersViewModel.AccommodatesWorkers)</span></a></td>
+        </tr>
+        @if (Model.AccommodatingWorkersViewModel.AccommodatesWorkers ?? false)
+        {
+            <tr>
+                <td>@Html.LabelFor(m => m.AccommodatingWorkersViewModel.AccommodationDeductedFromPay)</td>
+                <td>@Html.DisplayFor(m => m.AccommodatingWorkersViewModel.AccommodationDeductedFromPay, "NullableBoolean")</td>
+                <td class="change-answer"><a href="@Url.Action("Apply/Organisation/Part/7", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.AccommodatingWorkersViewModel.AccommodatesWorkers)</span></a></td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.AccommodatingWorkersViewModel.NumberOfProperties)</td>
+                <td>@Html.DisplayFor(m => m.AccommodatingWorkersViewModel.NumberOfProperties, "NullableInteger")</td>
+                <td class="change-answer"><a href="@Url.Action("Apply/Organisation/Part/7", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.AccommodatingWorkersViewModel.AccommodatesWorkers)</span></a></td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.AccommodatingWorkersViewModel.AccommodationWorkersChoose)</td>
+                <td>@Html.DisplayFor(m => m.AccommodatingWorkersViewModel.AccommodationWorkersChoose, "NullableBoolean")</td>
+                <td class="change-answer"><a href="@Url.Action("Apply/Organisation/Part/7", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.AccommodatingWorkersViewModel.AccommodatesWorkers)</span></a></td>
+            </tr>
+            
+        }
+        <tr>
+            <td>@Html.LabelFor(m => m.SourcingWorkersViewModel.WorkerSource)</td>
+            <td>@Html.DisplayFor(m => m.SourcingWorkersViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/Organisation/Part/8", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.SourcingWorkersViewModel.WorkerSource)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.WorkerSupplyMethodViewModel.WorkerSupplyMethod)</td>
+            <td>@Html.DisplayFor(m => m.WorkerSupplyMethodViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/Organisation/Part/9", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.WorkerSupplyMethodViewModel.WorkerSupplyMethod)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.WorkerContractViewModel.SelectedContract)</td>
+            <td>@Html.DisplayFor(m => m.WorkerContractViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/Organisation/Part/10", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.WorkerContractViewModel.SelectedContract)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.BannedFromTradingViewModel.HasBeenBanned)</td>
+            <td>@Html.DisplayFor(m => m.BannedFromTradingViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/Organisation/Part/11", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.BannedFromTradingViewModel.HasBeenBanned)</span></a></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.SubcontractorViewModel.UsesSubcontractors)</td>
+            <td>@Html.DisplayFor(m => m.SubcontractorViewModel)</td>
+            <td class="change-answer"><a href="@Url.Action("Apply/Organisation/Part/12", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.SubcontractorViewModel.UsesSubcontractors)</span></a></td>
+        </tr>
+        @if (Model.IsShellfish)
+        {
+            <tr>
+                <td>@Html.LabelFor(m => m.ShellfishWorkerNumberViewModel.NumberOfWorkers)</td>
+                <td>@Html.DisplayFor(m => m.ShellfishWorkerNumberViewModel.NumberOfWorkers, "NullableInteger")</td>
+                <td class="change-answer"><a href="@Url.Action("Apply/Organisation/Part/13", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.ShellfishWorkerNumberViewModel.NumberOfWorkers)</span></a></td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.ShellfishWorkerNationalityViewModel.NationalityOfWorkers)</td>
+                <td>@Html.DisplayFor(m => m.ShellfishWorkerNationalityViewModel.NationalityOfWorkers)</td>
+                <td class="change-answer"><a href="@Url.Action("Apply/Organisation/Part/14", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.ShellfishWorkerNationalityViewModel.NationalityOfWorkers)</span></a></td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.PreviouslyWorkedInShellfishViewModel.PreviouslyWorkedInShellfish)</td>
+                <td>@Html.DisplayFor(m => m.PreviouslyWorkedInShellfishViewModel)</td>
+                <td class="change-answer"><a href="@Url.Action("Apply/Organisation/Part/15", "Licence")">Change<span class="visually-hidden"> @Html.LabelFor(m => m.PreviouslyWorkedInShellfishViewModel.PreviouslyWorkedInShellfish)</span></a></td>
+            </tr>
+        }
+    </tbody>
+</table>

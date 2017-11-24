@@ -1,0 +1,30 @@
+﻿@using GLAA.Domain.Models
+@model GLAA.ViewModels.LicenceApplication.NamedIndividualCollectionViewModel
+
+@{
+    ViewBag.Title = "Named Individuals";
+}
+
+@using (Html.BeginForm())
+{
+    <main id="content" role="main">
+        <div class="grid-row">
+            <div class="column-two-thirds">
+                @Html.Partial("_GdsValidationSummary")
+            </div>
+            <div class="column-full">
+                <h1 class="heading-large">             
+                    Named Individuals
+                </h1>
+                <p class="lede">@Html.DisplayFor(x => x.IntroText)</p>
+            </div>
+            @if (!Model.IsShellfish && (Model.TurnoverBand == TurnoverBand.OverTenMillion || Model.TurnoverBand == TurnoverBand.FiveToTenMillion))
+            {
+                <div class="column-two-thirds">
+                    @Html.RadioButtonFormGroupFor(x => x.NamedIndividualType, Model.AvailableIndividualTypes)
+                </div>
+            }
+        </div>
+        <button type="submit" class="button">Save and continue</button>
+    </main>
+}

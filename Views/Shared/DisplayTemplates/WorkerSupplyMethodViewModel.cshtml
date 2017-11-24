@@ -1,0 +1,20 @@
+﻿@using GLAA.Domain.Models
+@model GLAA.ViewModels.LicenceApplication.WorkerSupplyMethodViewModel
+    
+@{
+    string text;
+
+    if (Model?.WorkerSupplyMethod == null)
+    {
+        text = "Not Set";
+    }
+    else if (Model.WorkerSupplyMethod != WorkerSupplyMethod.Other)
+    {
+        text = Model.WorkerSupplyMethod.ToString();
+    }
+    else
+    {
+        text = Model.WorkerSupplyOther;
+    }
+}
+@text

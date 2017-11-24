@@ -1,0 +1,41 @@
+﻿@using GLAA.Web.Helpers
+@model GLAA.ViewModels.LicenceApplication.NamedIndividualCollectionViewModel
+
+@{
+    ViewBag.Title = "Named Individuals";
+}
+
+<main id="content" role="main">
+    <div class="grid-row">
+        <div class="column-full">
+            <br />
+            @if (!SessionHelper.GetCurrentUserIsAdmin(Session))
+            {
+                <p>
+                    @Html.ActionLink("Return to Task List", "TaskList")
+                </p>
+            }
+            else
+            {
+                <p>
+                    @Html.ActionLink("Return to overview", "Licence", "Admin", new { id = SessionHelper.GetCurrentLicenceId(Session) }, new { })
+                </p>
+            }
+            <h1 class="heading-large">
+                Named Individuals / Job Titles
+            </h1>
+        </div>
+    </div>
+        @Html.DisplayFor(m => m)
+        @if (!SessionHelper.GetCurrentUserIsAdmin(Session))
+        {
+            <div class="grid-row">
+                <div class="column-full">
+                    <p>
+                        @Html.ActionLink("Go to next section", "Organisation", 1, new { @class = "button" })
+                    </p>
+                </div>
+            </div>
+        }
+</main>
+

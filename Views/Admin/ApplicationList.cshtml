@@ -1,0 +1,64 @@
+﻿@model GLAA.ViewModels.Admin.AdminLicenceListViewModel
+@using GLAA.ViewModels.LicenceApplication
+@{
+    ViewBag.Title = "GLAA - Home Page";
+    var isApplication = Convert.ToBoolean(Request.QueryString["isApplication"]);
+    var viewAll = Convert.ToBoolean(Request.QueryString["all"]);
+    var status = Request.QueryString["status"];
+}
+<h2 class="heading-large admin-page-title">@Model.Title</h2>
+<div class="grid-row">
+    <div class="column-one-quarter">
+        <div class="data">
+            <span class="data-item bold-xsmall">New</span>
+            <span class="data-item bold-xlarge">@Model.NewApplications</span>
+        </div>
+    </div>
+    <div class="column-one-quarter">
+        <div class="data">
+            <span class="data-item bold-xsmall">Require Attention</span>
+            <span class="data-item bold-xlarge">@Model.RequireAttention</span>
+        </div>
+    </div>
+    <div class="column-one-quarter">
+        <div class="data">
+            <span class="data-item bold-xsmall">Outstanding Fees</span>
+            <span class="data-item bold-xlarge">@Model.OutstandingFees</span>
+        </div>
+    </div>
+    <div class="column-one-quarter">
+        <div class="data">
+            <span class="data-item bold-xsmall">Nearly expired</span>
+            <span class="data-item bold-xlarge">@Model.NearlyExpired</span>
+        </div>
+    </div>
+</div>
+<h2 class="heading-large">All <small style="display: @(viewAll ? "none" : "inline-block");"><a href="?status=@(status)&all=true&isApplication=@(isApplication.ToString())" class="link-view">View all @Model.Licences.Count()</a></small><small style="display: @(viewAll ? "inline-block" : "none");"><a href="?status=@(status)&all=false&isApplication=@(isApplication.ToString())" class="link-view">View latest 10</a></small></h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Application Ref</th>
+            <th>Company</th>
+            <th>Principal Authority</th>
+            <th>Date of Application</th>
+            <th>Current Status</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var licence in Model.Licences)
+        {
+            <tr>
+                <td>@licence.ApplicationId</td>
+                <td>@licence.OrganisationName</td>
+                <td>@licence.PrincipalAuthorityName</td>
+                <td>@(licence.ApplicationDate?.ToString("dd/MM/yyyy") ?? "")</td>
+                <td class="application-status">
+                    <div class="swatch @(licence.MostRecentStatus.Status.GetInternalClassNames())"></div>
+                    <p>@licence.MostRecentStatus.InternalStatus</p>
+                </td>
+                <td><a href="@Url.Action("Licence", new { id = licence.Id })" class="link">view</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

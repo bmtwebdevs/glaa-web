@@ -1,0 +1,79 @@
+﻿@model GLAA.ViewModels.LicenceApplication.DeclarationViewModel
+    
+@{
+    ViewBag.Title = "Declaration";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-xlarge">Declaration and Consent</h1>
+            <p>
+                Data Protection.  The personal data you provide to the GLAA will be processed in accordance with the Data Protection Act 1998.  The information and personal data you provide is required under the Gangmasters Licensing Act 2004 and is processed for the purposes of assessing your application and managing your licence when granted.  Failure to provide the correct and necessary information will delay your application.  The information will be retained for the licence application and management process and thereafter for only as long as necessary and in line with our retention policy.
+            </p>
+            <p>
+                The GLAA is the Data Controller and you have a right of access to your personal data.  To do this, please contact the Data Protection Officer by writing to the address below or by sending an email to foidp@gls.gsi.gov.uk.  Should you have a complaint about the processing of your personal data by the GLAA then please contact us.  You also have the right to complain about the processing of your personal data to the UK Information Commissioners Office.  They can be contacted at www.ico.org.uk.
+            </p>
+            <p>
+
+                Other non-personal Information held by the GLAA may be released under the Freedom of Information Act 2000.
+            </p>
+            <p>
+                You must confirm your answer to the following questions.
+            </p>
+
+
+            <div class="multiple-choice">
+                @Html.RequiredCheckbox(x => x.AgreedToStatementOne)                
+            </div>
+
+            <div class="multiple-choice">
+                @Html.RequiredCheckbox(x => x.AgreedToStatementTwo)
+            </div>
+
+            <div class="multiple-choice">
+                @Html.RequiredCheckbox(x => x.AgreedToStatementThree)
+            </div>
+
+            <div class="multiple-choice">
+                @Html.RequiredCheckbox(x => x.AgreedToStatementFour)
+            </div>
+
+            <div class="multiple-choice">
+                @Html.RequiredCheckbox(x => x.AgreedToStatementFive)
+            </div>
+
+            <div class="multiple-choice">
+                @Html.RequiredCheckbox(x => x.AgreedToStatementSix)
+            </div>
+
+
+            <div class="column-full">
+                <h1 class="heading-large">
+                    Name of signatory
+                </h1>
+            </div>
+            <div class="column-two-thirds">
+                <div class="form-group">
+                    @Html.TextFormGroupFor(x => x.SignatoryName)
+                </div>
+                <div class="form-group">
+                    @Html.DateFormGroupFor(x => x.SignatureDate)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <div class="grid-row">
+        <div class="column-full">
+            <div class="form-group">
+                <button type="submit" class="button">Save and continue</button>
+            </div>
+        </div>
+    </div>
+}

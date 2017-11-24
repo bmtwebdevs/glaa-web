@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Organisation - Part 5";
+    var switchValue = "true";
+}
+
+@model GLAA.ViewModels.LicenceApplication.TransportingWorkersViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @Html.Partial("_GdsValidationSummary")
+        </div>
+        <div class="column-full">
+            <h1 class="heading-large">
+                Will you be transporting your workers to the workplace?
+            </h1>
+        </div>
+        <div class="column-two-thirds">
+            <div class="form-group">
+                <fieldset>
+                    <legend>
+                        <span class="body-text"></span>
+                    </legend>
+                    @foreach (var option in Model.YesNo)
+                    {
+                        <div class="multiple-choice revealer">
+                            @Html.RadioButtonFor(x => x.TransportsWorkersToWorkplace, option.Value)
+                            @Html.Label(option.Text)
+                        </div>
+
+                        if (option.Value == switchValue)
+                        {
+                            <div class="panel panel-border-narrow js-hidden" id="transports-workers">                                                         
+                                @Html.TextFormGroupFor(x => x.NumberOfVehicles)   
+                                @Html.RadioButtonFormGroupFor(x => x.TransportDeductedFromPay, Model.YesNo)                                
+                                @Html.RadioButtonFormGroupFor(x => x.TransportWorkersChoose, Model.YesNo)
+                            </div>
+                        }
+                    }
+                </fieldset>
+            </div>
+        </div>
+    </div>    
+    <button type="submit" class="button">Save and continue</button>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            hiddenContent.hideContent();
+            branchedQuestion.toggleBranch('.revealer > input[type="radio"]', '#transports-workers', @switchValue);
+        });
+    </script>
+}

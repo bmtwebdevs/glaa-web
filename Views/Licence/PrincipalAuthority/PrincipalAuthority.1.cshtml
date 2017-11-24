@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Principal Authority Details";
+}
+
+@model GLAA.ViewModels.LicenceApplication.PrincipalAuthorityViewModel
+
+<main id="content" role="main">
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-large">
+                @ViewBag.Title
+            </h1>
+            <p>Principal Authority (PA) is a term that we use to describe the person responsible for the day-to-day management of the organisation.</p>
+            <p>In this section you will be asked a series of questions about the person who is being designated as the PA. The PA should complete this section.</p>
+            <p>You will be required to answer questions concerning:</p>
+            <ul class="list-bullet">
+                <li>Personal information: personal address, date of birth, town/ country of birth, job title, business phone number, business email address, National Insurance number (if there is one).</li>
+                <li>Previous experience.</li>
+                <li>Passport details.</li>
+                <li>The GLAA security questions which will be used to determine whether an inspection is required, and what additional checks may be required.</li>
+            </ul>
+            <p>You can save and return to this section at a later date if required.</p>
+        </div>
+    </div>
+
+    <a id="StartSection" class="button button-start" href="@Url.Action("Apply/PrincipalAuthority/Part/2", "Licence")">Start section</a>
+</main>
